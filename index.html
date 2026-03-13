@@ -563,7 +563,7 @@ var EVENT_POOL = [
       { text: '"别急，我们慢慢来，时间会改变一切"', cost: '心态-10，信任+3', effects: { mood: -10, trust: 3 }, xdEmotion: 'sad', response: '别急。你爸现在是气头上，等他冷静了会好的。我们慢慢来。', responseFrom: 'me', followUp: { from: 'narrator', text: '你自己也不信这句话。有些偏见，不是时间能改变的。' } },
       { text: '"你想怎么做？我尊重你的决定"', cost: '心态-15，信任-5', effects: { mood: -15, trust: -5 }, xdEmotion: 'sad', response: '你想怎么做？不管你怎么选，我都尊重你。', responseFrom: 'me', followUp: { from: 'xd', text: '你怎么能这么说……你让我选，就是在逼我选……我选不了啊……' } },
     ],
-    condition: function(s) { return s.trust < 45 && s.day >= 5; }, weight: function(s) { return Math.max(0, 45 - s.trust); }, minDay: 5,
+    condition: function(s) { return s.trust < 45 && s.day >= 4; }, weight: function(s) { return Math.max(0, 45 - s.trust); }, minDay: 4,
   },
   {
     id: 'father_investigate', type: 'conflict',
@@ -585,12 +585,13 @@ var EVENT_POOL = [
     messages: [
       { from: 'xd', text: '我爸给我安排了一个相亲' },
       { from: 'xd', text: '对方是本地的 家里有房有车' },
-      { from: 'xd', text: '我拒绝了 我爸甩了我一巴掌' },
-      { from: 'narrator', text: '你的手攥紧了手机。' },
+      { from: 'xd', text: '我拒绝了 我爸特别失望地看着我 一句话都没说就回了房间' },
+      { from: 'xd', text: '那个眼神比骂我还让我难受' },
+      { from: 'narrator', text: '你能想象到那个场景——一个父亲沉默的失望，比愤怒更有杀伤力。' },
     ],
     choices: [
-      { text: '"他打你了？！我现在就去找他！"', cost: '心态-10，信任+5', effects: { mood: -10, trust: 5 }, xdEmotion: 'worried', response: '他凭什么打你？！你告诉我地址，我现在就过去！', responseFrom: 'me', followUp: { from: 'xd', text: '不要！求你了不要来。你来了只会更糟。我没事的……就是脸有点红。' } },
-      { text: '"……你去见见也行，就当应付一下"', cost: '心态-20，信任-10', effects: { mood: -20, trust: -10 }, xdEmotion: 'sad', response: '你要不就去见见？应付一下你爸，省得他打你。', responseFrom: 'me', followUp: { from: 'xd', text: '……你真的希望我去见别人吗？你是不是不在乎了？' } },
+      { text: '"你爸不是坏人……他只是用错了方式爱你"', cost: '心态-10，信任+5', effects: { mood: -10, trust: 5 }, xdEmotion: 'torn', response: '你爸不是坏人。他只是太爱你了，怕你受苦。只是他用错了方式。', responseFrom: 'me', followUp: { from: 'xd', text: '我知道……所以才更难受。他要是不爱我，我倒能狠下心。偏偏他是真的为我好，只是他的"好"里不包括你……' } },
+      { text: '"……你去见见也行，就当应付一下"', cost: '心态-20，信任-10', effects: { mood: -20, trust: -10 }, xdEmotion: 'sad', response: '你要不就去见见？应付一下你爸，别让他太失望。', responseFrom: 'me', followUp: { from: 'xd', text: '……你真的希望我去见别人吗？你是不是不在乎了？' } },
       { text: '心疼到说不出话，发了一句"我心疼你"', cost: '心态-15，信任+10', effects: { mood: -15, trust: 10 }, xdEmotion: 'bittersweet', response: '我心疼你。', responseFrom: 'me', followUp: { from: 'narrator', text: '只有三个字。但小丁看到这三个字的时候，觉得所有委屈都有人知道了。她哭了很久，但这次的眼泪里有温暖。' } },
     ],
     condition: function(s) { return s.day >= 4; }, weight: function(s) { return 8; }, minDay: 4,
@@ -671,7 +672,7 @@ var EVENT_POOL = [
       { text: '"他在用亲情绑架你，你看不出来吗？"', cost: '心态-5，信任-8', effects: { mood: -5, trust: -8 }, xdEmotion: 'torn', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"我知道！！"小丁突然吼了出来，然后捂住了嘴，泪如雨下。"我什么都知道……但他是我爸啊……"公园里几个路人回头看了你们一眼。' } },
       { text: '沉默很久，抱了抱她', cost: '心态-12，信任+8', effects: { mood: -12, trust: 8 }, xdEmotion: 'bittersweet', response: '', responseFrom: 'me', followUp: { from: 'narrator', text: '你没有说话，只是抱了抱她。她把脸埋在你的肩膀上，弄湿了你的衣服。那天傍晚的风很凉，但你一点也不想松手。' } },
     ],
-    condition: function(s) { return s.trust < 40 && s.day >= 6; }, weight: function(s) { return Math.max(0, 40 - s.trust); }, minDay: 6,
+    condition: function(s) { return s.trust < 40 && s.day >= 5; }, weight: function(s) { return Math.max(0, 40 - s.trust); }, minDay: 5,
   },
 
   // ===== 自我挣扎与觉醒类 =====
@@ -688,7 +689,7 @@ var EVENT_POOL = [
       { text: '"你说的我都知道。但我放不下她。"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"你放不下，她也放不下。"朋友拍了拍你的背。"但你俩这样下去，不是办法啊。"你喝了一口酒，没有说话。' } },
       { text: '"也许你是对的……我该想想自己了"', cost: '心态+10，觉醒路线', effects: { mood: 10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你第一次从"为她坚持"的执念里抬起头，看了看自己。瘦了、累了、憔悴了。你已经很久没有好好对待自己了。' }, setAwakening: true },
     ],
-    condition: function(s) { return s.mood < 40 && s.day >= 5; }, weight: function(s) { return Math.max(0, 40 - s.mood) / 2; }, minDay: 5,
+    condition: function(s) { return s.mood < 40 && s.day >= 4; }, weight: function(s) { return Math.max(0, 40 - s.mood) / 2; }, minDay: 4,
   },
   {
     id: 'call_parents', type: 'awakening',
@@ -718,7 +719,7 @@ var EVENT_POOL = [
       { text: '"也许……放手也是一种爱"', cost: '心态+10，触发抉择', effects: { mood: 10, trust: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你第一次有了这个念头，然后被自己吓了一跳。但你无法否认——她因为你，和家人决裂，整日以泪洗面。你爱她，但你也把她拖入了痛苦。' }, setAwakening: true },
       { text: '"我要证明自己，让所有人闭嘴"', cost: '心态+5，钱包-5', effects: { mood: 5, money: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你打开了招聘网站，开始投简历。也许赚到足够多的钱，买得起房，她爸就没话说了。但你也知道，这是一条漫长的路。而小丁，等得起吗？' } },
     ],
-    condition: function(s) { return s.awakening >= 1 && s.day >= 7; }, weight: function(s) { return 50; }, minDay: 7,
+    condition: function(s) { return s.awakening >= 1 && s.day >= 5; }, weight: function(s) { return 50; }, minDay: 5,
   },
   {
     id: 'final_choice', type: 'awakening',
@@ -731,7 +732,7 @@ var EVENT_POOL = [
       { text: '"我们不分开。我会拼命让你爸认可我的。"', cost: '心态-10，信任+10', effects: { mood: -10, trust: 10 }, xdEmotion: 'bittersweet', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '小丁看着你，嘴唇在抖。她点了点头。"好。那我等你。不管多久。"你知道这条路很难。但至少，你们还在一起走。' } },
       { text: '"小丁……谢谢你。但我不想你再受苦了。"', cost: '触发放手结局', effects: { mood: 20, trust: -50 }, xdEmotion: 'sad', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"不要——"她还没说完，眼泪就掉下来了。你站起来，把她搂在怀里。在她耳边说："你值得被好好爱，不用偷偷摸摸地。"你松手的时候，觉得整个世界都空了。' }, triggerEnding: 'letting_go' },
     ],
-    condition: function(s) { return s.awakening >= 2 && s.day >= 9; }, weight: function(s) { return 100; }, minDay: 9,
+    condition: function(s) { return s.awakening >= 2 && s.day >= 6; }, weight: function(s) { return 100; }, minDay: 6,
   },
 
   // ===== 更多日常细节 =====
@@ -771,7 +772,7 @@ var EVENT_POOL = [
       { text: '马上把好消息告诉小丁', cost: '信任+8，心态+10', effects: { trust: 8, mood: 10 }, xdEmotion: 'hopeful', response: '宝贝！老板说要给我升职了！', responseFrom: 'me', followUp: { from: 'xd', text: '真的吗！！太好了！！我就知道你最厉害！我要跟我妈说！' } },
       { text: '先不说了，等真正落实了再说', cost: '心态+5', effects: { mood: 5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你忍住没说。你已经给了太多承诺和希望，万一落空，又是一次失望。你想等所有事都确定了，再给她一个真正的好消息。' } },
     ],
-    condition: function(s) { return s.day >= 5; }, weight: function(s) { return 6; }, minDay: 5,
+    condition: function(s) { return s.day >= 4; }, weight: function(s) { return 6; }, minDay: 4,
   },
 
   // ===== 小丁的内心纠结——年龄焦虑 =====
@@ -859,7 +860,7 @@ var EVENT_POOL = [
       { text: '"你可以不用为了我跟家里断"', cost: '心态-5，信任-5', effects: { mood: -5, trust: -5 }, xdEmotion: 'sad', response: '你不一定要跟家里断。也许我们可以慢慢来，不用那么极端。', responseFrom: 'me', followUp: { from: 'xd', text: '慢慢来？我爸给我的选择就是要么分手，要么断绝关系。哪里有慢慢来的余地……' } },
       { text: '心里翻涌着说不出话，最后只发了："抱抱你"', cost: '心态-12，信任+8', effects: { mood: -12, trust: 8 }, xdEmotion: 'bittersweet', response: '抱抱你。', responseFrom: 'me', followUp: { from: 'narrator', text: '两个字。但小丁看到的时候，终于觉得有人在。哪怕隔着屏幕，哪怕解决不了任何问题，至少有人在。' } },
     ],
-    condition: function(s) { return s.day >= 5; }, weight: function(s) { return 9; }, minDay: 5,
+    condition: function(s) { return s.day >= 4; }, weight: function(s) { return 9; }, minDay: 4,
   },
   {
     id: 'xd_regret_question', type: 'daily',
@@ -950,7 +951,7 @@ var EVENT_POOL = [
       { text: '"那我是不是该准备一下，找个机会正式见面？"', cost: '心态-5，信任+10', effects: { mood: -5, trust: 10 }, xdEmotion: 'hopeful', response: '那我是不是该准备一下？买点好烟好酒，找个机会正式见叔叔？', responseFrom: 'me', followUp: { from: 'xd', text: '先别急！万一他又变卦了怎么办……我再让我妈试探试探。但这次真的感觉不一样了！' } },
       { text: '"叹气……也许是因为他知道你不会让步吧"', cost: '心态+3，信任+5', effects: { mood: 3, trust: 5 }, xdEmotion: 'bittersweet', response: '也许你爸也在动摇。他那么爱你，看你这么辛苦，他也心疼。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看了这条消息好几遍。也许是真的。也许她爸的固执，正在一点一点被女儿的坚持瓦解。' } },
     ],
-    condition: function(s) { return s.day >= 6; }, weight: function(s) { return 7; }, minDay: 6,
+    condition: function(s) { return s.day >= 5; }, weight: function(s) { return 7; }, minDay: 5,
   },
 ];
 
@@ -967,7 +968,7 @@ var DAILY_ACTIVITIES = [
 
 // ==================== 游戏核心 ====================
 var TIME_SLOTS = ['☀️ 早上', '🌤️ 下午', '🌙 晚上', '🌑 深夜'];
-var MAX_DAYS = 14;
+var MAX_DAYS = 7;
 
 var XD_EMOTIONS = {
   happy:      { label: '😊 开心', eventBias: 'repair' },
@@ -994,11 +995,11 @@ var ENDINGS = {
   },
   survived: {
     icon: '😮‍💨', title: '苦苦支撑',
-    text: '14天过去了。\n你们还在一起，但谁都不知道明天会怎样。\n\n小丁还在跟她爸周旋。\n你还在拼命赚钱。\n你们的爱情像一棵长在石缝里的草——\n活着，但活得很艰难。\n\n至少，今天还在一起。'
+    text: '七天过去了。\n你们还在一起，但谁都不知道明天会怎样。\n\n小丁还在跟她爸周旋。\n你还在拼命赚钱。\n你们的爱情像一棵长在石缝里的草——\n活着，但活得很艰难。\n\n至少，今天还在一起。'
   },
   good: {
     icon: '🌅', title: '曙光初现',
-    text: '14天过去了。\n小丁的妈妈站在了你们这边。\n你的工作也有了起色。\n\n她爸虽然还是不同意，\n但态度从"绝对不行"变成了沉默。\n\n小丁说："沉默就是松动的开始。"\n你笑了，第一次觉得未来有了一点光。\n\n路还很长，但你们在一起走。'
+    text: '七天过去了。\n小丁的妈妈站在了你们这边。\n你的工作也有了起色。\n\n她爸虽然还是不同意，\n但态度从"绝对不行"变成了沉默。\n\n小丁说："沉默就是松动的开始。"\n你笑了，第一次觉得未来有了一点光。\n\n路还很长，但你们在一起走。'
   },
   perfect: {
     icon: '✨', title: '偏见终会被打破（隐藏结局）',
@@ -1279,11 +1280,10 @@ var Game = {
     s.phase = 'activity';
     if (s.day > MAX_DAYS) { this.checkFinalEnding(); return; }
     this.addMsg('system', '— 第' + s.day + '天 —');
-    if (s.day === 4) this.addMsg('narrator', '你在这座城市已经习惯了被贴上"苏北人"的标签。但习惯不代表不痛。');
-    else if (s.day === 7) this.addMsg('narrator', '一周了。小丁的爸还是没有松口的迹象。你有时候会想，你到底在坚持什么。');
-    else if (s.day === 10) this.addMsg('narrator', '第十天。你照镜子的时候发现自己瘦了很多。小丁也是。你们都在被这段关系消耗。');
-    else if (s.day === 13) this.addMsg('narrator', '倒数第二天了。不管结果如何，你想告诉她：遇见你，我不后悔。');
-    else if (s.day === 14) this.addMsg('narrator', '最后一天。你深吸一口气，打开了手机。');
+    if (s.day === 3) this.addMsg('narrator', '你在这座城市已经习惯了被贴上"苏北人"的标签。但习惯不代表不痛。');
+    else if (s.day === 5) this.addMsg('narrator', '第五天。你照镜子的时候发现自己瘦了。小丁也是。你们都在被这段关系消耗。');
+    else if (s.day === 6) this.addMsg('narrator', '倒数第二天了。不管结果如何，你想告诉她：遇见你，我不后悔。');
+    else if (s.day === 7) this.addMsg('narrator', '最后一天。你深吸一口气，打开了手机。');
     else {
       var mornings = [
         '闹钟响了。窗外是这座不完全属于你的城市。',
