@@ -34,7 +34,6 @@ body {
 }
 .screen.active { display: flex; }
 
-/* ===== 开始界面 ===== */
 .start-container {
   display: flex;
   flex-direction: column;
@@ -97,17 +96,16 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(233,69,96,0.4);
 }
-.btn-start:active {
-  transform: translateY(0);
-}
+.btn-start:active { transform: translateY(0); }
 
 .tips {
   margin-top: 30px;
   font-size: 12px;
   color: #555;
+  text-align: center;
+  line-height: 1.8;
 }
 
-/* ===== 状态栏 ===== */
 .status-bar {
   background: #16213e;
   padding: 10px 15px;
@@ -124,20 +122,9 @@ body {
   font-size: 13px;
 }
 
-#day-num {
-  font-weight: 700;
-  color: #e94560;
-}
-
-#time-slot {
-  color: #ffd460;
-  font-weight: 600;
-}
-
-.xd-mood {
-  font-size: 12px;
-  color: #aaa;
-}
+#day-num { font-weight: 700; color: #e94560; }
+#time-slot { color: #ffd460; font-weight: 600; }
+.xd-mood { font-size: 12px; color: #aaa; }
 
 .resources {
   display: grid;
@@ -152,11 +139,7 @@ body {
   font-size: 12px;
 }
 
-.res-label {
-  width: 55px;
-  flex-shrink: 0;
-  font-size: 11px;
-}
+.res-label { width: 55px; flex-shrink: 0; font-size: 11px; }
 
 .res-bar {
   flex: 1;
@@ -177,14 +160,8 @@ body {
 .bar-fill.time { background: linear-gradient(90deg, #3498db, #74b9ff); }
 .bar-fill.trust { background: linear-gradient(90deg, #2ecc71, #55efc4); }
 
-.res-val {
-  width: 30px;
-  text-align: right;
-  font-weight: 600;
-  font-size: 11px;
-}
+.res-val { width: 30px; text-align: right; font-weight: 600; font-size: 11px; }
 
-/* ===== 聊天区域 ===== */
 .chat-area {
   flex: 1;
   overflow-y: auto;
@@ -199,13 +176,69 @@ body {
 .chat-area::-webkit-scrollbar { width: 3px; }
 .chat-area::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 
+.msg-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  animation: msgIn 0.3s ease;
+}
+
+.msg-row-xd { align-self: flex-start; max-width: 85%; }
+.msg-row-me { align-self: flex-end; flex-direction: row-reverse; max-width: 85%; }
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.avatar-xd {
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
+  box-shadow: 0 2px 8px rgba(255,154,158,0.3);
+}
+
+.avatar-xd::after {
+  content: "👩";
+  font-size: 22px;
+}
+
+.avatar-me {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  box-shadow: 0 2px 8px rgba(102,126,234,0.3);
+}
+
+.avatar-me::after {
+  content: "👨";
+  font-size: 22px;
+}
+
+.msg-bubble {
+  display: flex;
+  flex-direction: column;
+}
+
+.msg-name {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.msg-name-xd { color: #e94560; }
+.msg-name-me { color: #74b9ff; text-align: right; }
+
 .msg {
-  max-width: 80%;
+  max-width: 100%;
   padding: 10px 14px;
   border-radius: 12px;
   font-size: 14px;
   line-height: 1.6;
-  animation: msgIn 0.3s ease;
   word-break: break-word;
 }
 
@@ -215,26 +248,15 @@ body {
 }
 
 .msg-xd {
-  align-self: flex-start;
   background: #2d3436;
   color: #dfe6e9;
-  border-bottom-left-radius: 4px;
-}
-
-.msg-xd::before {
-  content: "小丁";
-  display: block;
-  font-size: 11px;
-  color: #e94560;
-  margin-bottom: 4px;
-  font-weight: 600;
+  border-top-left-radius: 4px;
 }
 
 .msg-me {
-  align-self: flex-end;
   background: #0f3460;
   color: #dfe6e9;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 .msg-system {
@@ -270,7 +292,6 @@ body {
 .effect-positive { color: #55efc4; }
 .effect-negative { color: #ff7675; }
 
-/* ===== 选项区域 ===== */
 .choices-area {
   padding: 12px 15px;
   padding-bottom: max(12px, env(safe-area-inset-bottom));
@@ -336,7 +357,6 @@ body {
   color: #aaa;
 }
 
-/* ===== 结局界面 ===== */
 .ending-container {
   display: flex;
   flex-direction: column;
@@ -346,12 +366,10 @@ body {
   padding: 40px 30px;
   text-align: center;
   background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  overflow-y: auto;
 }
 
-.ending-icon {
-  font-size: 80px;
-  margin-bottom: 20px;
-}
+.ending-icon { font-size: 80px; margin-bottom: 20px; }
 
 .ending-title {
   font-size: 28px;
@@ -376,7 +394,6 @@ body {
   line-height: 2;
 }
 
-/* ===== 动画 ===== */
 .shake { animation: shake 0.5s ease; }
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
@@ -386,36 +403,30 @@ body {
   80% { transform: translateX(4px); }
 }
 
-/* ===== 响应式 ===== */
 @media (min-width: 421px) {
-  #app {
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
-  }
+  #app { border-left: 1px solid #333; border-right: 1px solid #333; }
 }
 </style>
 </head>
 <body>
 <div id="app">
-  <!-- 开始界面 -->
   <div id="screen-start" class="screen active">
     <div class="start-container">
       <div class="title-art">💔</div>
       <h1 class="game-title">爱分手的小丁</h1>
-      <p class="subtitle">一款黑色幽默恋爱生存游戏</p>
-      <p class="desc">在这段高波动关系中<br>管理你的心态、钱包、时间和信任<br>努力活到下一天</p>
+      <p class="subtitle">一款苦情恋爱生存游戏</p>
+      <p class="desc">她不是不爱你<br>是她爸不让她爱你<br>因为你是苏北的</p>
       <button class="btn-start" onclick="Game.start()">开始新游戏</button>
-      <div class="tips">提示：每个选择都有代价，没有完美答案</div>
+      <div class="tips">"我们没有做错任何事，<br>只是出生在了不同的地方。"</div>
     </div>
   </div>
 
-  <!-- 游戏主界面 -->
   <div id="screen-game" class="screen">
     <div class="status-bar">
       <div class="day-info">
         <span id="day-num">第1天</span>
         <span id="time-slot">早上</span>
-        <span id="xiaoding-mood" class="xd-mood">小丁：😊 正常</span>
+        <span id="xiaoding-mood" class="xd-mood">小丁：😢 心疼</span>
       </div>
       <div class="resources">
         <div class="res-item">
@@ -444,7 +455,6 @@ body {
     <div id="choices-area" class="choices-area"></div>
   </div>
 
-  <!-- 结局界面 -->
   <div id="screen-ending" class="screen">
     <div class="ending-container">
       <div id="ending-icon" class="ending-icon">💔</div>
@@ -458,346 +468,401 @@ body {
 
 <script>
 // ==================== 事件池 ====================
-const EVENT_POOL = [
+// 背景：你是苏北人，在南京/苏南打拼。小丁是本地人，她爱你，但她爸因为地域偏见坚决反对。
+// 小丁夹在你和她爸之间，痛苦挣扎。她每次说"分手"都是含着泪的，不是不爱，是扛不住了。
+// 信任值 = 这段关系能撑多久（她爸的施压会持续降低它）
+// 心态值 = 你的精神状态（被歧视、被看不起会持续消耗）
+// 钱包值 = 你的经济实力（想证明自己就得拼命赚钱）
+
+var EVENT_POOL = [
+  // ===== 小丁心疼你类（她的挣扎） =====
   {
-    id: 'no_good_morning', type: 'daily',
+    id: 'xd_crying_call', type: 'repair',
     messages: [
-      { from: 'xd', text: '你今天早上都没给我发早安。' },
-      { from: 'xd', text: '是不是不想我了？' },
+      { from: 'narrator', text: '凌晨一点，小丁打来电话。你接起来，听到的是抽泣声。' },
+      { from: 'xd', text: '我爸今天又骂我了……' },
+      { from: 'xd', text: '他说我不争气，找了个苏北的……' },
+      { from: 'xd', text: '我好累……但我不想跟你分开……' },
     ],
     choices: [
-      { text: '"对不起宝贝，起晚了，一醒来就想你了"', cost: '心态-5', effects: { mood: -5, trust: 5 }, xdEmotion: 'normal', response: '对不起宝贝，起晚了，一醒来就想你了', responseFrom: 'me', followUp: { from: 'xd', text: '哼，算了，下次记得。' } },
-      { text: '"我也有自己的生活节奏啊"', cost: '信任-10', effects: { trust: -10 }, xdEmotion: 'upset', response: '我也有自己的生活节奏啊', responseFrom: 'me', followUp: { from: 'xd', text: '你就是不在乎我。' } },
-      { text: '（发一个可爱的表情包糊弄过去）', cost: '信任-3', effects: { trust: -3 }, xdEmotion: 'normal', response: '[可爱表情包]', responseFrom: 'me', followUp: { from: 'xd', text: '……行吧。' } },
+      { text: '"别哭了，有我在，我们会好的"', cost: '心态-10，信任+10', effects: { mood: -10, trust: 10 }, xdEmotion: 'torn', response: '别哭了，有我在。不管怎样，我都不会放手的。', responseFrom: 'me', followUp: { from: 'narrator', text: '你说着安慰的话，但心里清楚，你也不知道这条路还能走多远。' } },
+      { text: '"要不……你别跟你爸硬扛了"', cost: '心态-5，信任-8', effects: { mood: -5, trust: -8 }, xdEmotion: 'sad', response: '要不……你别跟你爸硬扛了，我不想你为了我受委屈。', responseFrom: 'me', followUp: { from: 'xd', text: '你说这话是什么意思……你想放弃了吗？' } },
+      { text: '沉默着陪她哭', cost: '心态-15，信任+12', effects: { mood: -15, trust: 12 }, xdEmotion: 'torn', response: '', responseFrom: 'me', followUp: { from: 'narrator', text: '你什么都没说，就这样听着她哭。电话那头，她慢慢平静下来。有些时候，陪伴比语言更有力量。但你挂了电话之后，一个人坐在出租屋里，眼眶也红了。' } },
     ],
-    condition: (s) => true, weight: (s) => 10, minDay: 1,
+    condition: function(s) { return true; }, weight: function(s) { return 10; }, minDay: 1,
   },
   {
-    id: 'reply_too_slow', type: 'daily',
+    id: 'xd_sneak_out', type: 'repair',
     messages: [
-      { from: 'xd', text: '你刚刚回消息为什么那么慢？？' },
-      { from: 'xd', text: '在干嘛？跟谁在一起？' },
+      { from: 'xd', text: '我偷偷出来了' },
+      { from: 'xd', text: '我爸不知道' },
+      { from: 'xd', text: '你能来见我吗？就一会儿就好' },
     ],
     choices: [
-      { text: '"在忙工作啊，没看到消息"', cost: '信任-5', effects: { trust: -5 }, xdEmotion: 'upset', response: '在忙工作啊，没看到消息', responseFrom: 'me', followUp: { from: 'xd', text: '工作工作，你心里只有工作。' } },
-      { text: '"宝贝别多想，我就上了个厕所"', cost: '心态-5', effects: { mood: -5, trust: 3 }, xdEmotion: 'normal', response: '宝贝别多想，我就上了个厕所', responseFrom: 'me', followUp: { from: 'xd', text: '上厕所不能带手机吗？算了。' } },
-      { text: '"你能不能别这样？我又不是你的附属品"', cost: '信任-15，心态+5', effects: { trust: -15, mood: 5 }, xdEmotion: 'angry', response: '你能不能别这样？我又不是你的附属品', responseFrom: 'me', followUp: { from: 'xd', text: '好，那我们分手吧。' } },
+      { text: '放下所有事情去见她', cost: '钱包-15，信任+12，心态+5', effects: { money: -15, trust: 12, mood: 5 }, xdEmotion: 'bittersweet', response: '你等着，我打车过来', responseFrom: 'me', followUp: { from: 'narrator', text: '你们在街角的奶茶店坐了四十分钟。她一直握着你的手，什么都没说。走的时候她回头看了你三次。' }, consumeTimeSlot: true },
+      { text: '"别冒险了，被你爸发现更麻烦"', cost: '信任-5，心态-5', effects: { trust: -5, mood: -5 }, xdEmotion: 'sad', response: '别出来了，被你爸发现又要吵。我们视频也行。', responseFrom: 'me', followUp: { from: 'xd', text: '好吧……我就是太想你了。' } },
+      { text: '"来我这边吧，我给你做饭"', cost: '钱包-10，信任+15，心态+10', effects: { money: -10, trust: 15, mood: 10 }, xdEmotion: 'happy', response: '来我这边吧，我给你做碗面', responseFrom: 'me', followUp: { from: 'narrator', text: '她来了你的出租屋。你给她煮了一碗西红柿鸡蛋面。她吃着吃着就哭了，说"就是这个味道，我不想失去这个味道"。' }, consumeTimeSlot: true },
     ],
-    condition: (s) => true, weight: (s) => 8, minDay: 1,
+    condition: function(s) { return true; }, weight: function(s) { return 8; }, minDay: 1,
   },
   {
-    id: 'chat_too_boring', type: 'daily',
+    id: 'xd_sorry', type: 'repair',
     messages: [
-      { from: 'xd', text: '你说话怎么越来越敷衍了' },
-      { from: 'xd', text: '就会说"嗯""好""哦"' },
-      { from: 'xd', text: '你到底爱不爱我' },
+      { from: 'xd', text: '对不起' },
+      { from: 'xd', text: '因为我爸的事，让你受委屈了' },
+      { from: 'xd', text: '你有没有后悔认识我' },
     ],
     choices: [
-      { text: '"爱啊，只是今天有点累"', cost: '心态-5', effects: { mood: -5, trust: 3 }, xdEmotion: 'normal', response: '爱啊，只是今天有点累', responseFrom: 'me', followUp: { from: 'xd', text: '你每次都说累……' } },
-      { text: '"那你想聊什么？你说，我听着"', cost: '心态-10', effects: { mood: -10, trust: 8 }, xdEmotion: 'happy', response: '那你想聊什么？你说，我听着', responseFrom: 'me', followUp: { from: 'xd', text: '真的吗！那我跟你说今天发生了一件事……' } },
-      { text: '（已读不回）', cost: '信任-12', effects: { trust: -12, mood: 3 }, xdEmotion: 'angry', response: '', responseFrom: 'me', followUp: { from: 'narrator', text: '你没有回复这条消息。十分钟后，小丁发来了十几条消息轰炸。' } },
+      { text: '"从来没有。认识你是我最幸运的事"', cost: '心态-5，信任+10', effects: { mood: -5, trust: 10 }, xdEmotion: 'bittersweet', response: '从来没有。认识你是我这辈子最幸运的事。', responseFrom: 'me', followUp: { from: 'xd', text: '我也是……所以才更难过。为什么偏偏是我们要经历这些。' } },
+      { text: '"有时候确实觉得很累"', cost: '心态+5，信任-5', effects: { mood: 5, trust: -5 }, xdEmotion: 'sad', response: '说实话，有时候确实觉得很累。不是因为你，是这个世界让人太累了。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁很久没有回消息。你知道，你说了实话，但实话有时候比谎言更伤人。' } },
+      { text: '"不要说对不起，这不是你的错"', cost: '心态-8，信任+8', effects: { mood: -8, trust: 8 }, xdEmotion: 'torn', response: '不要说对不起。你没有做错任何事，我也没有。错的是那些带着偏见看人的人。', responseFrom: 'me', followUp: { from: 'xd', text: '可是……那个带偏见的人是我爸啊……' } },
     ],
-    condition: (s) => true, weight: (s) => 8, minDay: 1,
+    condition: function(s) { return true; }, weight: function(s) { return 8; }, minDay: 1,
   },
   {
-    id: 'forgot_anniversary', type: 'daily',
+    id: 'xd_share_happy', type: 'repair',
     messages: [
-      { from: 'xd', text: '今天什么日子你知道吗' },
-      { from: 'narrator', text: '你完全想不起来今天是什么纪念日。' },
+      { from: 'xd', text: '今天我妈偷偷跟我说' },
+      { from: 'xd', text: '她觉得你挺好的，就是你爸太固执了' },
+      { from: 'xd', text: '至少我妈站我们这边！' },
     ],
     choices: [
-      { text: '"当然知道啊！我正在准备惊喜呢"（其实不知道）', cost: '钱包-20', effects: { money: -20, trust: 5 }, xdEmotion: 'happy', response: '当然知道啊！我正在准备惊喜呢', responseFrom: 'me', followUp: { from: 'narrator', text: '你赶紧下单了一束花，加急配送。钱包在哭泣。' } },
-      { text: '"啊……是不是我们在一起的第X天？"（瞎猜）', cost: '信任-8', effects: { trust: -8 }, xdEmotion: 'upset', response: '是不是我们在一起的第……呃……', responseFrom: 'me', followUp: { from: 'xd', text: '连这个都记不住，你心里到底有没有我？' } },
-      { text: '"不好意思，我确实忘了，但我想补偿你"', cost: '心态-8，钱包-10', effects: { mood: -8, money: -10, trust: 2 }, xdEmotion: 'upset', response: '不好意思，我确实忘了，但我想补偿你', responseFrom: 'me', followUp: { from: 'xd', text: '忘了就是忘了，补什么补。我好难过。' } },
+      { text: '"真的吗！那阿姨能不能帮忙劝劝"', cost: '信任+10，心态+8', effects: { trust: 10, mood: 8 }, xdEmotion: 'hopeful', response: '真的吗！那阿姨能不能帮忙劝劝叔叔？', responseFrom: 'me', followUp: { from: 'xd', text: '我妈说她在想办法……但我爸脾气你也知道的。不过至少不是所有人都反对我们！' } },
+      { text: '"一个人站我们这边也没用……"', cost: '心态-5', effects: { mood: -5 }, xdEmotion: 'sad', response: '一个人站我们这边也没用，你爸不松口，说什么都白搭。', responseFrom: 'me', followUp: { from: 'xd', text: '你能不能别这么丧……我只是想告诉你一个好消息……' } },
     ],
-    condition: (s) => s.day >= 3, weight: (s) => 6, minDay: 3,
+    condition: function(s) { return s.day >= 3; }, weight: function(s) { return 6; }, minDay: 3,
   },
+
+  // ===== 父亲施压类 =====
   {
-    id: 'tone_wrong', type: 'daily',
+    id: 'father_calls_xd', type: 'conflict',
     messages: [
-      { from: 'xd', text: '你刚才那句话什么意思？' },
-      { from: 'xd', text: '你是在嘲讽我吗？' },
-      { from: 'narrator', text: '你翻了翻聊天记录，完全不知道哪句话惹到她了。' },
+      { from: 'narrator', text: '小丁突然发来一大段消息。' },
+      { from: 'xd', text: '我爸刚才又跟我谈了' },
+      { from: 'xd', text: '他说如果我不分手，就断我的生活费' },
+      { from: 'xd', text: '他还说要把我户口迁走' },
+      { from: 'xd', text: '我好害怕' },
     ],
     choices: [
-      { text: '"啊？我什么都没说错啊"', cost: '信任-8', effects: { trust: -8, mood: -5 }, xdEmotion: 'angry', response: '啊？我什么都没说错啊', responseFrom: 'me', followUp: { from: 'xd', text: '你不觉得有问题才是最大的问题！' } },
-      { text: '"对不起，我不是那个意思"', cost: '心态-8', effects: { mood: -8, trust: 3 }, xdEmotion: 'normal', response: '对不起，我不是那个意思', responseFrom: 'me', followUp: { from: 'narrator', text: '你道了歉，但连自己都不知道在道什么歉。' } },
-      { text: '"你能不能别这么敏感？"', cost: '信任-15', effects: { trust: -15, mood: 5 }, xdEmotion: 'angry', response: '你能不能别这么敏感？', responseFrom: 'me', followUp: { from: 'xd', text: '敏感？好，那你找个不敏感的去吧！' } },
+      { text: '"我养你。我加班赚钱，不用怕"', cost: '心态-10，钱包-5，信任+10', effects: { mood: -10, money: -5, trust: 10 }, xdEmotion: 'torn', response: '不用怕，我养你。从今天开始我多接几个活，钱的事不用你操心。', responseFrom: 'me', followUp: { from: 'narrator', text: '你说得很坚定，但打开银行APP看了一眼余额，手指微微发抖。' } },
+      { text: '"你爸太过分了……但他毕竟是你爸"', cost: '心态-8，信任+3', effects: { mood: -8, trust: 3 }, xdEmotion: 'torn', response: '你爸太过分了……但他毕竟是你爸，你也别太跟他吵。', responseFrom: 'me', followUp: { from: 'xd', text: '我知道……可是他那些话真的好伤人。他说苏北人都不靠谱，我听着心都在痛，他说的是你啊。' } },
+      { text: '"……要不，我去找你爸谈谈"', cost: '心态-15，信任+8', effects: { mood: -15, trust: 8 }, xdEmotion: 'worried', response: '我想去找你爸谈谈。让他了解真实的我，而不是他想象中的苏北人。', responseFrom: 'me', followUp: { from: 'xd', text: '不行不行，你不知道我爸的脾气……我怕他会当面说很难听的话。我受不了你被那样羞辱。' } },
     ],
-    condition: (s) => true, weight: (s) => 8, minDay: 1,
+    condition: function(s) { return true; }, weight: function(s) { return Math.max(5, 60 - s.trust) / 3; }, minDay: 2,
   },
   {
-    id: 'do_you_love_me', type: 'daily',
+    id: 'father_ultimatum', type: 'conflict',
     messages: [
-      { from: 'xd', text: '你是不是不爱我了？' },
-      { from: 'narrator', text: '这个问题像一道考试题，没有标准答案，但一定有错误答案。' },
+      { from: 'xd', text: '我爸给我下了最后通牒' },
+      { from: 'xd', text: '他说这个月之内必须分手' },
+      { from: 'xd', text: '不然就别认他这个爸' },
+      { from: 'narrator', text: '你能感受到手机屏幕另一边，小丁在发抖。' },
     ],
     choices: [
-      { text: '"爱啊，怎么突然问这个"', cost: '心态-5', effects: { mood: -5, trust: 5 }, xdEmotion: 'normal', response: '爱啊，怎么突然问这个', responseFrom: 'me', followUp: { from: 'xd', text: '就是觉得你最近不太对劲……' } },
-      { text: '"你为什么总问这个问题？"', cost: '信任-10', effects: { trust: -10, mood: -5 }, xdEmotion: 'upset', response: '你为什么总问这个问题？', responseFrom: 'me', followUp: { from: 'xd', text: '因为你从来不让我有安全感！' } },
-      { text: '"……"（你也不知道了）', cost: '信任-15，觉醒+1', effects: { trust: -15 }, xdEmotion: 'cold', response: '……', responseFrom: 'me', followUp: { from: 'narrator', text: '你沉默了。也许这个沉默本身，就是某种答案。' }, setAwakening: true },
+      { text: '"我们私奔吧"', cost: '信任+15，钱包-10，心态-5', effects: { trust: 15, money: -10, mood: -5 }, xdEmotion: 'torn', response: '要不我们走吧。去一个没人认识我们的城市，重新开始。', responseFrom: 'me', followUp: { from: 'xd', text: '……你认真的吗？我……我不知道。离开家，离开所有人……可是如果能跟你在一起的话……' } },
+      { text: '"别急，我们慢慢来，时间会改变一切"', cost: '心态-10，信任+3', effects: { mood: -10, trust: 3 }, xdEmotion: 'sad', response: '别急。你爸现在是气头上，等他冷静了会好的。我们慢慢来。', responseFrom: 'me', followUp: { from: 'narrator', text: '你自己也不信这句话。有些偏见，不是时间能改变的。' } },
+      { text: '"你想怎么做？我尊重你的决定"', cost: '心态-15，信任-5', effects: { mood: -15, trust: -5 }, xdEmotion: 'sad', response: '你想怎么做？不管你怎么选，我都尊重你。', responseFrom: 'me', followUp: { from: 'xd', text: '你怎么能这么说……你让我选，就是在逼我选……我选不了啊……' } },
     ],
-    condition: (s) => s.day >= 3, weight: (s) => 7, minDay: 3,
+    condition: function(s) { return s.trust < 45 && s.day >= 5; }, weight: function(s) { return Math.max(0, 45 - s.trust); }, minDay: 5,
   },
-  // ===== 冲突升级类 =====
   {
-    id: 'bring_up_old_stuff', type: 'conflict',
+    id: 'father_investigate', type: 'conflict',
     messages: [
-      { from: 'xd', text: '你上次说的那句话我到现在还没放下' },
-      { from: 'xd', text: '你以前也是这样，每次都……' },
-      { from: 'xd', text: '你是不是一直都没把我当回事？' },
+      { from: 'narrator', text: '小丁发来消息，语气很慌。' },
+      { from: 'xd', text: '我爸不知道怎么查到了你的信息' },
+      { from: 'xd', text: '他知道你在租房住，月薪多少都查了' },
+      { from: 'xd', text: '他跟我说"你看看他能给你什么"' },
     ],
     choices: [
-      { text: '"那件事我已经道过歉了，能不能翻篇了"', cost: '信任-10，心态-8', effects: { trust: -10, mood: -8 }, xdEmotion: 'angry', response: '那件事我已经道过歉了，能不能翻篇了', responseFrom: 'me', followUp: { from: 'xd', text: '你就是这样！从来不重视我的感受！' } },
-      { text: '"你说得对，是我不好，我以后注意"', cost: '心态-15', effects: { mood: -15, trust: 5 }, xdEmotion: 'normal', response: '你说得对，是我不好，我以后注意', responseFrom: 'me', followUp: { from: 'narrator', text: '你说了第1000次"我以后注意"。你自己都不信了。' } },
-      { text: '"我觉得我们需要认真谈谈这个问题"', cost: '心态-10，信任+8', effects: { mood: -10, trust: 8 }, xdEmotion: 'normal', response: '我觉得我们需要认真谈谈这个问题', responseFrom: 'me', followUp: { from: 'xd', text: '……好吧。那你说。' } },
+      { text: '"我现在确实没什么钱，但我在努力"', cost: '心态-15', effects: { mood: -15, trust: 3 }, xdEmotion: 'torn', response: '我知道我现在条件不好。但我一直在努力，我不会让你跟着我吃苦的。', responseFrom: 'me', followUp: { from: 'xd', text: '我知道你在努力……可是我爸不看这些。他只看结果。' } },
+      { text: '"他凭什么查我？！"', cost: '心态-5，信任-5', effects: { mood: -5, trust: -5 }, xdEmotion: 'worried', response: '他凭什么查我的隐私？他这是违法的！', responseFrom: 'me', followUp: { from: 'xd', text: '你先别激动……他就是那样的人。他觉得在"保护"我。' } },
+      { text: '"没关系。让他看，我问心无愧"', cost: '心态-8，信任+8', effects: { mood: -8, trust: 8 }, xdEmotion: 'bittersweet', response: '没关系。让他看。我虽然穷，但我从来没有亏待过你。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看到这条消息，眼泪掉下来了。她知道你说的是真的。但在她爸眼里，真心不值钱。' } },
     ],
-    condition: (s) => s.trust < 60, weight: (s) => Math.max(0, 60 - s.trust) / 3, minDay: 2,
+    condition: function(s) { return s.day >= 3; }, weight: function(s) { return 8; }, minDay: 3,
   },
   {
-    id: 'compare_with_others', type: 'conflict',
+    id: 'father_arrange_date', type: 'conflict',
     messages: [
-      { from: 'xd', text: '你看看人家的男朋友' },
-      { from: 'xd', text: '天天送花、发朋友圈、到处秀恩爱' },
-      { from: 'xd', text: '你呢？连个早安都懒得发' },
+      { from: 'xd', text: '我爸给我安排了一个相亲' },
+      { from: 'xd', text: '对方是本地的 家里有房有车' },
+      { from: 'xd', text: '我拒绝了 我爸甩了我一巴掌' },
+      { from: 'narrator', text: '你的手攥紧了手机。' },
     ],
     choices: [
-      { text: '"别人是别人，我有我的方式爱你"', cost: '信任-5', effects: { trust: -5, mood: -5 }, xdEmotion: 'upset', response: '别人是别人，我有我的方式爱你', responseFrom: 'me', followUp: { from: 'xd', text: '你的方式就是什么都不做吗？' } },
-      { text: '"好吧，那我以后也发朋友圈"', cost: '心态-10', effects: { mood: -10, trust: 5 }, xdEmotion: 'happy', response: '好吧，那我以后也发朋友圈', responseFrom: 'me', followUp: { from: 'narrator', text: '你在心里叹了口气，默默打开了朋友圈。' } },
-      { text: '"那你去找那个别人的男朋友啊"', cost: '信任-20', effects: { trust: -20, mood: 5 }, xdEmotion: 'angry', response: '那你去找那个别人的男朋友啊', responseFrom: 'me', followUp: { from: 'xd', text: '你说什么？！你再说一遍！' } },
+      { text: '"他打你了？！我现在就去找他！"', cost: '心态-10，信任+5', effects: { mood: -10, trust: 5 }, xdEmotion: 'worried', response: '他凭什么打你？！你告诉我地址，我现在就过去！', responseFrom: 'me', followUp: { from: 'xd', text: '不要！求你了不要来。你来了只会更糟。我没事的……就是脸有点红。' } },
+      { text: '"……你去见见也行，就当应付一下"', cost: '心态-20，信任-10', effects: { mood: -20, trust: -10 }, xdEmotion: 'sad', response: '你要不就去见见？应付一下你爸，省得他打你。', responseFrom: 'me', followUp: { from: 'xd', text: '……你真的希望我去见别人吗？你是不是不在乎了？' } },
+      { text: '心疼到说不出话，发了一句"我心疼你"', cost: '心态-15，信任+10', effects: { mood: -15, trust: 10 }, xdEmotion: 'bittersweet', response: '我心疼你。', responseFrom: 'me', followUp: { from: 'narrator', text: '只有三个字。但小丁看到这三个字的时候，觉得所有委屈都有人知道了。她哭了很久，但这次的眼泪里有温暖。' } },
     ],
-    condition: (s) => true, weight: (s) => 8, minDay: 2,
+    condition: function(s) { return s.day >= 4; }, weight: function(s) { return 8; }, minDay: 4,
   },
+
+  // ===== 地域歧视类 =====
   {
-    id: 'sudden_breakup', type: 'conflict',
+    id: 'discrimination_at_work', type: 'daily',
     messages: [
-      { from: 'xd', text: '我觉得我们不合适' },
-      { from: 'xd', text: '分手吧' },
-      { from: 'narrator', text: '这已经是小丁第N次说分手了。你感到一阵疲惫。' },
+      { from: 'narrator', text: '中午在公司食堂，同事们闲聊。' },
+      { from: 'narrator', text: '"苏北那边的人啊，穷就算了，还特别……"' },
+      { from: 'narrator', text: '他们没注意到你就坐在旁边。' },
     ],
     choices: [
-      { text: '"别这样，我们好好谈谈"', cost: '心态-15，信任+5', effects: { mood: -15, trust: 5 }, xdEmotion: 'upset', response: '别这样，我们好好谈谈', responseFrom: 'me', followUp: { from: 'xd', text: '每次都是好好谈谈，谈了有用吗？' } },
-      { text: '"好，分就分"', cost: '触发分手结局判定', effects: { trust: -30, mood: 10 }, xdEmotion: 'cold', response: '好，分就分', responseFrom: 'me', followUp: { from: 'narrator', text: '空气突然安静了。你不确定这次是不是来真的。' } },
-      { text: '"你先冷静一下，我等你"', cost: '心态-10', effects: { mood: -10, trust: 3 }, xdEmotion: 'cold', response: '你先冷静一下，我等你', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁没有再回消息。你盯着手机屏幕，心里很不是滋味。' } },
+      { text: '默默端起餐盘走了', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你一个人在楼梯间吃完了午饭。饭菜没有任何味道。你想起小丁她爸说的那些话，跟这些同事说的，几乎一模一样。' } },
+      { text: '"你们在说什么？我就是苏北的"', cost: '心态-5，信任+3', effects: { mood: -5, trust: 3 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '空气突然安静了。几个同事尴尬地笑了笑，说"开玩笑的"。但你知道那不是玩笑。' } },
+      { text: '装没听见，继续吃饭', cost: '心态-8', effects: { mood: -8 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你继续吃着饭，但每一口都像是在咽石头。晚上你没有跟小丁说这件事，你不想她更难过。' } },
     ],
-    condition: (s) => s.trust < 45, weight: (s) => Math.max(0, 45 - s.trust) / 2, minDay: 3,
+    condition: function(s) { return true; }, weight: function(s) { return 8; }, minDay: 1,
   },
   {
-    id: 'social_media_misunderstanding', type: 'conflict',
+    id: 'xd_friend_gossip', type: 'daily',
     messages: [
-      { from: 'xd', text: '你点赞了那个女的朋友圈？？？' },
-      { from: 'xd', text: '你们什么关系' },
-      { from: 'xd', text: '别跟我说是同事' },
+      { from: 'xd', text: '今天聚会，我那些朋友又在说' },
+      { from: 'xd', text: '她们说"你怎么找了个苏北的"' },
+      { from: 'xd', text: '我帮你解释了 但她们不听' },
+      { from: 'xd', text: '我好气哦 她们凭什么这样说你' },
     ],
     choices: [
-      { text: '"就是同事啊，你想多了"', cost: '信任-12', effects: { trust: -12 }, xdEmotion: 'angry', response: '就是同事啊，你想多了', responseFrom: 'me', followUp: { from: 'xd', text: '我就知道你会这么说！你删掉！' } },
-      { text: '"好好好，我取消点赞，以后不点了"', cost: '心态-10', effects: { mood: -10, trust: 3 }, xdEmotion: 'upset', response: '好好好，我取消点赞，以后不点了', responseFrom: 'me', followUp: { from: 'narrator', text: '你默默取消了点赞，觉得自己的社交空间又缩小了一点。' } },
-      { text: '"我觉得你管得有点多了"', cost: '信任-18，心态+5', effects: { trust: -18, mood: 5 }, xdEmotion: 'angry', response: '我觉得你管得有点多了', responseFrom: 'me', followUp: { from: 'xd', text: '好啊，那你自由了，我们分手！' } },
+      { text: '"没事，习惯了"', cost: '心态-10', effects: { mood: -10, trust: 3 }, xdEmotion: 'sad', response: '没事，习惯了。你别因为我跟朋友闹不愉快。', responseFrom: 'me', followUp: { from: 'xd', text: '你怎么能习惯这种事？！我替你不值！我以后不跟她们玩了！' } },
+      { text: '"谢谢你帮我说话"', cost: '心态-5，信任+8', effects: { mood: -5, trust: 8 }, xdEmotion: 'bittersweet', response: '谢谢你帮我说话。知道你站在我这边，我就不怕什么。', responseFrom: 'me', followUp: { from: 'xd', text: '我当然站在你这边了。你是我男朋友啊，傻瓜。' } },
+      { text: '"你会不会有一天也觉得她们说得对？"', cost: '信任-8，心态-10', effects: { trust: -8, mood: -10 }, xdEmotion: 'sad', response: '你会不会有一天也觉得她们说得对？觉得找我是一个错误？', responseFrom: 'me', followUp: { from: 'xd', text: '你怎么可以这样想我？！我要是在乎这些，我早就走了！' } },
     ],
-    condition: (s) => true, weight: (s) => 7, minDay: 2,
+    condition: function(s) { return true; }, weight: function(s) { return 8; }, minDay: 2,
   },
   {
-    id: 'come_see_me_now', type: 'conflict',
+    id: 'rental_discrimination', type: 'daily',
     messages: [
-      { from: 'xd', text: '你现在能不能马上来见我' },
-      { from: 'xd', text: '我心情很不好' },
-      { from: 'xd', text: '你要是不来就别联系我了' },
+      { from: 'narrator', text: '你看中了一间离公司近的房子，打电话给房东。' },
+      { from: 'narrator', text: '"你哪里人？""盐城的。"' },
+      { from: 'narrator', text: '"哦，苏北的啊……这个房子已经租出去了。"' },
+      { from: 'narrator', text: '你知道，昨天它还挂着"空房"。' },
     ],
     choices: [
-      { text: '"好，我马上过来"', cost: '钱包-15，信任+10', effects: { money: -15, trust: 10 }, xdEmotion: 'normal', response: '好，我马上过来', responseFrom: 'me', followUp: { from: 'narrator', text: '你放下手里的事情，打了一辆车赶过去。' }, consumeTimeSlot: true },
-      { text: '"我现在真走不开，晚上可以吗"', cost: '信任-12', effects: { trust: -12 }, xdEmotion: 'angry', response: '我现在真走不开，晚上可以吗', responseFrom: 'me', followUp: { from: 'xd', text: '算了，不用了。我自己待着。' } },
-      { text: '"你不能每次都这样要求我随叫随到"', cost: '信任-15，心态+5', effects: { trust: -15, mood: 5 }, xdEmotion: 'cold', response: '你不能每次都这样要求我随叫随到', responseFrom: 'me', followUp: { from: 'xd', text: '好，我知道了。我在你心里就是这个位置。' } },
+      { text: '咽下委屈，继续找下一家', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你又打了十几个电话。有三个在听到"苏北"之后挂了。你终于找到一间愿意租给你的——租金比市价高了两百块。' } },
+      { text: '把这件事告诉小丁', cost: '心态-8，信任+5', effects: { mood: -8, trust: 5 }, xdEmotion: 'sad', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '小丁听完沉默了很久，然后说："我帮你找，我用我的名义。"你不知道该感动还是该难过。' } },
+      { text: '打完电话，一个人去便利店买了罐啤酒', cost: '心态-5，钱包-3', effects: { mood: -5, money: -3 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你坐在便利店门口喝完了那罐啤酒。你想起爸妈送你去火车站时说的话："去了大城市好好干，别给家乡人丢脸。"你没有丢脸，可大城市也没有给你一个公平的机会。' } },
     ],
-    condition: (s) => true, weight: (s) => 7, minDay: 2,
+    condition: function(s) { return true; }, weight: function(s) { return 6; }, minDay: 2,
   },
+
+  // ===== 小丁被迫说分手类 =====
   {
-    id: 'friend_intervention', type: 'conflict',
+    id: 'forced_breakup_text', type: 'conflict',
     messages: [
-      { from: 'xd', text: '你那个朋友是不是在你面前说我坏话了？' },
-      { from: 'xd', text: '他是不是让你跟我分手？' },
-      { from: 'xd', text: '你到底听他的还是听我的？' },
+      { from: 'xd', text: '我们分手吧' },
+      { from: 'narrator', text: '你盯着这四个字。你知道这不是她的本意。' },
+      { from: 'narrator', text: '消息发送时间是凌晨三点。她一定哭了很久才发出来的。' },
     ],
     choices: [
-      { text: '"他没说你坏话，别想多了"', cost: '信任-5', effects: { trust: -5, mood: -5 }, xdEmotion: 'upset', response: '他没说你坏话，别想多了', responseFrom: 'me', followUp: { from: 'xd', text: '你就是向着他说话！' } },
-      { text: '"当然听你的"', cost: '心态-10', effects: { mood: -10, trust: 8 }, xdEmotion: 'normal', response: '当然听你的', responseFrom: 'me', followUp: { from: 'narrator', text: '你选择站在小丁这边。但你心里知道，朋友说的不无道理。' } },
-      { text: '"你不能要求我和朋友断联"', cost: '信任-12，心态+5', effects: { trust: -12, mood: 5 }, xdEmotion: 'angry', response: '你不能要求我和朋友断联', responseFrom: 'me', followUp: { from: 'xd', text: '我没让你断联！但你能不能在他面前维护一下我？！' } },
+      { text: '"你爸又说什么了？"', cost: '心态-10，信任+5', effects: { mood: -10, trust: 5 }, xdEmotion: 'torn', response: '你爸又说什么了？跟我说。', responseFrom: 'me', followUp: { from: 'xd', text: '……他说如果不分手，就不让我回家过年了。他还说，苏北人配不上他女儿。' } },
+      { text: '"不分。你说一百次我也不分。"', cost: '心态-15，信任+12', effects: { mood: -15, trust: 12 }, xdEmotion: 'bittersweet', response: '不分。你说一百次我也不分。除非你亲口告诉我，你真的不爱我了。', responseFrom: 'me', followUp: { from: 'narrator', text: '过了很久，小丁回了一句："我做不到说那句话。"然后是一个哭到不行的语音。' } },
+      { text: '"好。如果这样能让你好过一点。"', cost: '心态-20，信任-15', effects: { mood: -20, trust: -15 }, xdEmotion: 'sad', response: '好。如果这样能让你好过一点。', responseFrom: 'me', followUp: { from: 'narrator', text: '你打出了这行字，但没有点发送。犹豫了十分钟，还是发了。那天晚上你失眠到天亮。' } },
     ],
-    condition: (s) => s.day >= 4, weight: (s) => 6, minDay: 4,
+    condition: function(s) { return s.trust < 50; }, weight: function(s) { return Math.max(0, 50 - s.trust) / 2; }, minDay: 3,
   },
-  // ===== 修复关系类 =====
   {
-    id: 'xd_apologize', type: 'repair',
+    id: 'breakup_in_person', type: 'conflict',
     messages: [
-      { from: 'xd', text: '刚才是我不好' },
-      { from: 'xd', text: '我知道我有时候太作了' },
-      { from: 'xd', text: '你别生气了好不好' },
+      { from: 'narrator', text: '小丁约你出来。你们坐在公园长椅上。' },
+      { from: 'narrator', text: '她低着头，一直搓手上的纸巾，搓成了碎片。' },
+      { from: 'xd', text: '我爸说了……如果我坚持，他会住院给我看' },
+      { from: 'xd', text: '他说他心脏不好 受不了这个刺激' },
+      { from: 'xd', text: '我不想你走……但我也不能让我爸……' },
     ],
     choices: [
-      { text: '"没事的，我不生气"', cost: '心态-3，信任+8', effects: { mood: -3, trust: 8 }, xdEmotion: 'happy', response: '没事的，我不生气', responseFrom: 'me', followUp: { from: 'xd', text: '你真好……我以后会注意的。' } },
-      { text: '"嗯，但这种事不能老是发生"', cost: '信任+3', effects: { trust: 3, mood: 3 }, xdEmotion: 'normal', response: '嗯，但这种事不能老是发生', responseFrom: 'me', followUp: { from: 'xd', text: '我知道了……' } },
-      { text: '"你每次都说改，改过吗？"', cost: '心态+5，信任-8', effects: { mood: 5, trust: -8 }, xdEmotion: 'upset', response: '你每次都说改，改过吗？', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁沉默了很久。你不确定自己说得对不对。' } },
+      { text: '握紧她的手："我们一起想办法"', cost: '心态-15，信任+10', effects: { mood: -15, trust: 10 }, xdEmotion: 'torn', response: '', responseFrom: 'me', followUp: { from: 'narrator', text: '你握着她冰凉的手。你们都知道，"想办法"这三个字越来越空洞了。但至少此刻，你们还握着彼此的手。' } },
+      { text: '"他在用亲情绑架你，你看不出来吗？"', cost: '心态-5，信任-8', effects: { mood: -5, trust: -8 }, xdEmotion: 'torn', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"我知道！！"小丁突然吼了出来，然后捂住了嘴，泪如雨下。"我什么都知道……但他是我爸啊……"公园里几个路人回头看了你们一眼。' } },
+      { text: '沉默很久，抱了抱她', cost: '心态-12，信任+8', effects: { mood: -12, trust: 8 }, xdEmotion: 'bittersweet', response: '', responseFrom: 'me', followUp: { from: 'narrator', text: '你没有说话，只是抱了抱她。她把脸埋在你的肩膀上，弄湿了你的衣服。那天傍晚的风很凉，但你一点也不想松手。' } },
     ],
-    condition: (s) => s.xiaoDingEmotion !== 'happy', weight: (s) => Math.max(0, 60 - s.trust) / 4, minDay: 2,
+    condition: function(s) { return s.trust < 40 && s.day >= 6; }, weight: function(s) { return Math.max(0, 40 - s.trust); }, minDay: 6,
   },
+
+  // ===== 自我挣扎与觉醒类 =====
   {
-    id: 'nice_dinner', type: 'repair',
+    id: 'friend_advice', type: 'awakening',
     messages: [
-      { from: 'xd', text: '今天晚上一起吃饭吗？' },
-      { from: 'xd', text: '我知道一家新开的店，看起来不错' },
+      { from: 'narrator', text: '你的老乡兄弟请你吃了顿烧烤。' },
+      { from: 'narrator', text: '"兄弟，你瘦了一圈。你还在跟那个姑娘扛着呢？"' },
+      { from: 'narrator', text: '"她爸看不起咱苏北人。你再怎么努力，那种人也不会改变想法的。"' },
+      { from: 'narrator', text: '"别把自己搞垮了。"' },
     ],
     choices: [
-      { text: '"好啊！我请客"', cost: '钱包-20，信任+10，心态+5', effects: { money: -20, trust: 10, mood: 5 }, xdEmotion: 'happy', response: '好啊！我请客', responseFrom: 'me', followUp: { from: 'narrator', text: '你们度过了一个愉快的晚餐。好像又回到了刚在一起的时候。' } },
-      { text: '"我今天有点累，改天行吗"', cost: '信任-8', effects: { trust: -8, mood: 5 }, xdEmotion: 'upset', response: '我今天有点累，改天行吗', responseFrom: 'me', followUp: { from: 'xd', text: '你总是改天改天，到底哪天？' } },
-      { text: '"好的，但AA可以吗？最近有点紧"', cost: '钱包-10，信任+3', effects: { money: -10, trust: 3, mood: 3 }, xdEmotion: 'normal', response: '好的，但AA可以吗？最近有点紧', responseFrom: 'me', followUp: { from: 'xd', text: '行吧……' } },
+      { text: '"我再试试。万一呢？"', cost: '心态-5', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '朋友叹了口气，给你倒了一杯酒。"行，万一呢。但你也想想你自己。"你碰了碰杯，但酒到嘴里是苦的。' } },
+      { text: '"你说的我都知道。但我放不下她。"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"你放不下，她也放不下。"朋友拍了拍你的背。"但你俩这样下去，不是办法啊。"你喝了一口酒，没有说话。' } },
+      { text: '"也许你是对的……我该想想自己了"', cost: '心态+10，觉醒路线', effects: { mood: 10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你第一次从"为她坚持"的执念里抬起头，看了看自己。瘦了、累了、憔悴了。你已经很久没有好好对待自己了。' }, setAwakening: true },
     ],
-    condition: (s) => true, weight: (s) => 8, minDay: 1,
+    condition: function(s) { return s.mood < 40 && s.day >= 5; }, weight: function(s) { return Math.max(0, 40 - s.mood) / 2; }, minDay: 5,
   },
   {
-    id: 'late_night_call', type: 'repair',
+    id: 'call_parents', type: 'awakening',
     messages: [
-      { from: 'narrator', text: '深夜11点，小丁打来了电话。' },
-      { from: 'xd', text: '你睡了吗……我睡不着' },
-      { from: 'xd', text: '我就是想听听你的声音' },
+      { from: 'narrator', text: '你妈打来电话。' },
+      { from: 'narrator', text: '"儿子，你在那边还好吗？听你声音不对劲。"' },
+      { from: 'narrator', text: '"是不是工作不顺？还是跟对象有矛盾了？"' },
+      { from: 'narrator', text: '你捏着手机，不知道该不该说实话。' },
     ],
     choices: [
-      { text: '陪她聊到凌晨两点', cost: '心态-10，信任+12', effects: { mood: -10, trust: 12 }, xdEmotion: 'happy', response: '没睡呢，陪你聊', responseFrom: 'me', followUp: { from: 'narrator', text: '你们聊到凌晨两点。第二天你顶着黑眼圈去上班，但小丁似乎开心了很多。' } },
-      { text: '"我快睡了，明天还要早起"', cost: '信任-5，心态+5', effects: { trust: -5, mood: 5 }, xdEmotion: 'upset', response: '我快睡了，明天还要早起', responseFrom: 'me', followUp: { from: 'xd', text: '好吧……晚安。' } },
-      { text: '"怎么了？是不是发生什么事了？"', cost: '心态-5，信任+8', effects: { mood: -5, trust: 8 }, xdEmotion: 'happy', response: '怎么了？是不是发生什么事了？', responseFrom: 'me', followUp: { from: 'xd', text: '没什么……就是想你了。谢谢你关心我。' } },
+      { text: '"没事妈，我挺好的"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你报了平安。挂了电话之后你在想，如果妈知道你被人因为是苏北人而看不起，她会多心疼。你不想让她知道。' } },
+      { text: '告诉她实情', cost: '心态-5，钱包+5', effects: { mood: -5, money: 5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"什么？因为咱是苏北的就看不起你？！"你妈气得声音都在抖。然后她沉默了，过了一会儿说："妈给你转两千块，你别委屈自己。"你咬着嘴唇没有哭。' } },
+      { text: '"妈……我是不是不该来这个城市"', cost: '心态-15，觉醒路线', effects: { mood: -15 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '电话那头安静了很久。然后你妈说："儿子，不管在哪里，你都是妈的骄傲。别人看不起你，是他们没眼光。"你挂了电话，蹲在出租屋门口哭了出来。' }, setAwakening: true },
     ],
-    condition: (s) => true, weight: (s) => 6, minDay: 1,
+    condition: function(s) { return s.mood < 45 && s.day >= 4; }, weight: function(s) { return Math.max(0, 45 - s.mood) / 2; }, minDay: 4,
   },
   {
-    id: 'xd_sick', type: 'repair',
+    id: 'final_reflection', type: 'awakening',
     messages: [
-      { from: 'xd', text: '我好像感冒了……' },
-      { from: 'xd', text: '头好晕' },
+      { from: 'narrator', text: '又一个失眠的夜晚。' },
+      { from: 'narrator', text: '你看着手机相册里和小丁的合照。她笑得那么开心。' },
+      { from: 'narrator', text: '但最近的照片里，你们都在哭。' },
+      { from: 'narrator', text: '你问自己：爱一个人，是不是一定要在一起？' },
     ],
     choices: [
-      { text: '请假去照顾她', cost: '钱包-10，心态-5，信任+15', effects: { money: -10, mood: -5, trust: 15 }, xdEmotion: 'happy', response: '你等着，我马上去给你买药', responseFrom: 'me', followUp: { from: 'narrator', text: '你请了半天假，去她家照顾她。她靠在你肩膀上睡着了。' }, consumeTimeSlot: true },
-      { text: '"多喝热水，好好休息"', cost: '信任-10', effects: { trust: -10 }, xdEmotion: 'upset', response: '多喝热水，好好休息', responseFrom: 'me', followUp: { from: 'xd', text: '多喝热水？就这？' } },
-      { text: '点了一份外卖粥送过去', cost: '钱包-10，信任+8', effects: { money: -10, trust: 8 }, xdEmotion: 'happy', response: '我给你点了粥，你注意查收', responseFrom: 'me', followUp: { from: 'xd', text: '谢谢……虽然你不能来，但收到还是很开心。' } },
+      { text: '"是的。我不会放手。"', cost: '心态-5', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你翻到最近一张照片，是你们在便利店门口的自拍。她靠在你肩上。你心想：我不管那个老头怎么看我，我就是要跟她在一起。' } },
+      { text: '"也许……放手也是一种爱"', cost: '心态+10，触发抉择', effects: { mood: 10, trust: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你第一次有了这个念头，然后被自己吓了一跳。但你无法否认——她因为你，和家人决裂，整日以泪洗面。你爱她，但你也把她拖入了痛苦。' }, setAwakening: true },
+      { text: '"我要证明自己，让所有人闭嘴"', cost: '心态+5，钱包-5', effects: { mood: 5, money: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你打开了招聘网站，开始投简历。也许赚到足够多的钱，买得起房，她爸就没话说了。但你也知道，这是一条漫长的路。而小丁，等得起吗？' } },
     ],
-    condition: (s) => true, weight: (s) => 5, minDay: 2,
+    condition: function(s) { return s.awakening >= 1 && s.day >= 7; }, weight: function(s) { return 50; }, minDay: 7,
   },
   {
-    id: 'xd_happy_moment', type: 'repair',
+    id: 'final_choice', type: 'awakening',
     messages: [
-      { from: 'xd', text: '今天被夸了！好开心！' },
-      { from: 'xd', text: '想第一个告诉你 嘻嘻' },
+      { from: 'narrator', text: '你约小丁出来。在你们第一次约会的那个咖啡厅。' },
+      { from: 'narrator', text: '她来了，眼睛肿肿的，但还是画了妆，穿了你说好看的那件裙子。' },
+      { from: 'narrator', text: '你看着她，心里像是有人在拧毛巾。' },
     ],
     choices: [
-      { text: '"太棒了宝贝！你最厉害了！"', cost: '信任+8', effects: { trust: 8, mood: 5 }, xdEmotion: 'happy', response: '太棒了宝贝！你最厉害了！', responseFrom: 'me', followUp: { from: 'xd', text: '嘻嘻嘻嘻你也很棒！' } },
-      { text: '"嗯嗯，不错"', cost: '信任-5', effects: { trust: -5 }, xdEmotion: 'upset', response: '嗯嗯，不错', responseFrom: 'me', followUp: { from: 'xd', text: '……你怎么永远都这么冷淡。' } },
+      { text: '"我们不分开。我会拼命让你爸认可我的。"', cost: '心态-10，信任+10', effects: { mood: -10, trust: 10 }, xdEmotion: 'bittersweet', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '小丁看着你，嘴唇在抖。她点了点头。"好。那我等你。不管多久。"你知道这条路很难。但至少，你们还在一起走。' } },
+      { text: '"小丁……谢谢你。但我不想你再受苦了。"', cost: '触发放手结局', effects: { mood: 20, trust: -50 }, xdEmotion: 'sad', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '"不要——"她还没说完，眼泪就掉下来了。你站起来，把她搂在怀里。在她耳边说："你值得被好好爱，不用偷偷摸摸地。"你松手的时候，觉得整个世界都空了。' }, triggerEnding: 'letting_go' },
     ],
-    condition: (s) => true, weight: (s) => 6, minDay: 1,
+    condition: function(s) { return s.awakening >= 2 && s.day >= 9; }, weight: function(s) { return 100; }, minDay: 9,
   },
-  // ===== 自我觉醒类 =====
+
+  // ===== 更多日常细节 =====
   {
-    id: 'friend_warning', type: 'awakening',
+    id: 'send_money_home', type: 'daily',
     messages: [
-      { from: 'narrator', text: '你的好朋友约你出来喝了一杯。' },
-      { from: 'narrator', text: '"兄弟，你最近状态不太对劲。"' },
-      { from: 'narrator', text: '"你脸色很差，天天看手机，说话都没精神。"' },
-      { from: 'narrator', text: '"那个小丁，真的适合你吗？"' },
+      { from: 'narrator', text: '月初了。爸发来消息说家里屋顶漏水了，要修一下。' },
+      { from: 'narrator', text: '你看了看余额，沉默了。' },
     ],
     choices: [
-      { text: '"她就是脾气大，其实人不坏"', cost: '心态-5', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '朋友沉默了一会儿，没有再说什么。但你从他的眼神里看到了担忧。' } },
-      { text: '"我也不知道……可能是我的问题"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你开始习惯性地把所有问题归到自己身上。朋友拍了拍你的肩膀。' } },
-      { text: '"你说得对，我需要好好想想"', cost: '心态+10，进入觉醒路线', effects: { mood: 10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你第一次认真地思考了这段关系。也许，不是所有关系都值得维持。' }, setAwakening: true },
+      { text: '转两千回家', cost: '钱包-20', effects: { money: -20, mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你给爸转了钱。他回了一个"好"。苏北的老房子，什么都在老化。就像你在这座城市里的处境。' } },
+      { text: '"爸你先找邻居帮忙，我下个月发了工资再说"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你爸发了个"行"。你知道他肯定会自己扛。你在心里暗暗发誓：一定要混出来。' } },
     ],
-    condition: (s) => s.mood < 40 && s.day >= 5, weight: (s) => Math.max(0, 40 - s.mood) / 2, minDay: 5,
+    condition: function(s) { return s.day >= 2; }, weight: function(s) { return 5; }, minDay: 2,
   },
   {
-    id: 'work_affected', type: 'awakening',
+    id: 'xd_send_food', type: 'repair',
+    messages: [
+      { from: 'xd', text: '我给你点了一份外卖' },
+      { from: 'xd', text: '你天天吃泡面我看着心疼' },
+      { from: 'xd', text: '别跟我客气 吃了就行' },
+    ],
+    choices: [
+      { text: '"你对我太好了"', cost: '心态+8，信任+5', effects: { mood: 8, trust: 5 }, xdEmotion: 'bittersweet', response: '你对我太好了。等我有钱了，我天天给你做饭。', responseFrom: 'me', followUp: { from: 'xd', text: '我等着你哦。红烧肉要做得像你上次那样的。' } },
+      { text: '"不用了，我自己能照顾自己"', cost: '信任-3，心态-3', effects: { trust: -3, mood: -3 }, xdEmotion: 'sad', response: '不用了，我自己能照顾自己。你别花这个钱。', responseFrom: 'me', followUp: { from: 'xd', text: '你怎么连我对你好都不让了……我是你女朋友啊。' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 6; }, minDay: 1,
+  },
+  {
+    id: 'good_news_promotion', type: 'repair',
     messages: [
       { from: 'narrator', text: '老板把你叫到办公室。' },
-      { from: 'narrator', text: '"你最近工作状态很差，开会走神，邮件漏回。"' },
-      { from: 'narrator', text: '"再这样下去，年终考核会有问题的。"' },
+      { from: 'narrator', text: '"你最近表现不错，下个季度考虑给你调个级。"' },
+      { from: 'narrator', text: '你心里一阵激动——多赚一点，就多一分底气。' },
     ],
     choices: [
-      { text: '"我最近私人的事比较多，我调整一下"', cost: '心态-10', effects: { mood: -10 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你回到工位上，又收到了小丁的三条消息。你感到一阵窒息。' } },
-      { text: '意识到自己的生活正在失控', cost: '心态-5，觉醒路线推进', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你突然意识到，你已经很久没有好好关心过自己了。' }, setAwakening: true },
+      { text: '马上把好消息告诉小丁', cost: '信任+8，心态+10', effects: { trust: 8, mood: 10 }, xdEmotion: 'hopeful', response: '宝贝！老板说要给我升职了！', responseFrom: 'me', followUp: { from: 'xd', text: '真的吗！！太好了！！我就知道你最厉害！我要跟我妈说！' } },
+      { text: '先不说了，等真正落实了再说', cost: '心态+5', effects: { mood: 5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你忍住没说。你已经给了太多承诺和希望，万一落空，又是一次失望。你想等所有事都确定了，再给她一个真正的好消息。' } },
     ],
-    condition: (s) => s.mood < 35 && s.day >= 6, weight: (s) => Math.max(0, 35 - s.mood) / 2, minDay: 6,
-  },
-  {
-    id: 'set_boundary', type: 'awakening',
-    messages: [
-      { from: 'narrator', text: '深夜，你一个人坐在房间里。' },
-      { from: 'narrator', text: '你回顾了这段关系——反复的争吵、道歉、和好、再争吵。' },
-      { from: 'narrator', text: '你问自己：这真的是爱情吗？' },
-    ],
-    choices: [
-      { text: '"也许只是还不够磨合"', cost: '维持现状', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你选择继续相信。或者说，你害怕改变。' } },
-      { text: '"我需要设立边界，告诉她什么是可以的，什么不是"', cost: '信任-5，心态+15', effects: { trust: -5, mood: 15 }, xdEmotion: 'cold', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你决定和小丁认真谈一次。不再无条件退让。' }, setAwakening: true },
-      { text: '"我想结束这段关系"', cost: '触发主动分手路线', effects: { mood: 20, trust: -50 }, xdEmotion: 'cold', response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你做出了一个也许早该做出的决定。' }, triggerEnding: 'liberation' },
-    ],
-    condition: (s) => s.awakening >= 2 && s.day >= 8, weight: (s) => 100, minDay: 8,
+    condition: function(s) { return s.day >= 5; }, weight: function(s) { return 6; }, minDay: 5,
   },
 ];
 
 // ===== 每日活动 =====
-const DAILY_ACTIVITIES = [
-  { id: 'work', name: '📋 上班赚钱', desc: '去公司搬砖', cost: '钱包+15，心态-5', effects: { money: 15, mood: -5 }, narrative: '你在公司待了一个时段。老板的脸和小丁的脸在你脑海中交替出现。' },
-  { id: 'rest', name: '😴 休息恢复', desc: '关掉手机休息', cost: '心态+15', effects: { mood: 15 }, narrative: '你关掉手机躺了一会儿。虽然怕漏掉小丁的消息，但身体确实轻松了一些。', riskText: '但小丁发现你关机了，有点不开心。', riskEffects: { trust: -5 }, riskChance: 0.3 },
-  { id: 'chat_xd', name: '💬 陪小丁聊天', desc: '认真陪她聊天', cost: '心态-5，信任+8', effects: { mood: -5, trust: 8 }, narrative: '你花了一个时段认真陪小丁聊天。话题从中午吃什么聊到人生意义。' },
-  { id: 'gift', name: '🎁 准备礼物', desc: '买礼物讨欢心', cost: '钱包-20，信任+12', effects: { money: -20, trust: 12 }, narrative: '你精心挑选了一份礼物。希望她能喜欢。', failCondition: (s) => s.money < 20, failText: '你看了看干瘪的钱包，放弃了这个想法。' },
-  { id: 'fix', name: '🔧 处理误会', desc: '主动沟通修复关系', cost: '心态-10，信任+10', effects: { mood: -10, trust: 10 }, narrative: '你鼓起勇气和小丁谈了谈最近的矛盾。虽然过程很累，但关系缓和了一些。' },
-  { id: 'friends', name: '🍻 和朋友吐槽', desc: '找朋友释放压力', cost: '心态+12，钱包-5', effects: { mood: 12, money: -5 }, narrative: '你和朋友出去喝了一杯。吐槽了一番之后，心情好了很多。', riskText: '小丁发现你和朋友出去了，问你为什么不陪她。', riskEffects: { trust: -5 }, riskChance: 0.25 },
-  { id: 'overtime', name: '💼 加班', desc: '加班多赚点', cost: '钱包+25，心态-12', effects: { money: 25, mood: -12 }, narrative: '你加了一个班。银行卡余额增加了，但人感觉被掏空了。' },
+var DAILY_ACTIVITIES = [
+  { id: 'work', name: '💼 拼命工作', desc: '多干一点，多赚一点', cost: '钱包+15，心态-8', effects: { money: 15, mood: -8 }, narrative: '你在公司埋头干活。想着多赚点钱，至少能让小丁她爸少一个看不起你的理由。' },
+  { id: 'rest', name: '😴 休息一下', desc: '你太累了，需要休息', cost: '心态+15', effects: { mood: 15 }, narrative: '你躺在出租屋的床上，盯着天花板。隔壁传来电视的声音。你闭上眼，假装什么烦恼都没有。', riskText: '但脑子里不停地想小丁的事，根本休息不好。', riskEffects: { mood: -5 }, riskChance: 0.3 },
+  { id: 'chat_xd', name: '💬 陪小丁聊天', desc: '哪怕只是报个平安', cost: '心态-3，信任+8', effects: { mood: -3, trust: 8 }, narrative: '你跟小丁视频了一会儿。她说了很多琐碎的小事，你就静静地听着。屏幕那头她在笑，但你看得出她的黑眼圈。' },
+  { id: 'gift', name: '🎁 给她买个小礼物', desc: '虽然买不起贵的', cost: '钱包-20，信任+12', effects: { money: -20, trust: 12 }, narrative: '你在街边看到了一个小发卡，蓝色的，小丁喜欢蓝色。你买下来拍了张照发给她。她回了一串感叹号和一个哭脸。', failCondition: function(s) { return s.money < 20; }, failText: '你在橱窗前站了一会儿，默默走开了。钱包空空的时候，连心意都表达不起。' },
+  { id: 'study', name: '📚 提升自己', desc: '考证、学技能、增加竞争力', cost: '心态-5，钱包+5', effects: { mood: -5, money: 5 }, narrative: '你在图书馆待了一个下午，学了一些新技能。也许有一天，你能强大到让所有偏见都闭嘴。' },
+  { id: 'friends', name: '🍺 跟老乡喝两杯', desc: '找同样在外打拼的兄弟聊聊', cost: '心态+12，钱包-5', effects: { mood: 12, money: -5 }, narrative: '你跟几个苏北老乡坐在烧烤摊上。大家都在外面不容易。喝了几杯之后，好像没那么苦了。' },
+  { id: 'overtime', name: '🌙 加班到深夜', desc: '用时间换钱', cost: '钱包+25，心态-15', effects: { money: 25, mood: -15 }, narrative: '你加班到了晚上十一点。出了公司大楼，城市的灯火很美。你给小丁发了一张照片："我在努力。"她回了一个抱抱的表情。' },
 ];
 
 // ==================== 游戏核心 ====================
-const TIME_SLOTS = ['☀️ 早上', '🌤️ 下午', '🌙 晚上', '🌑 深夜'];
-const MAX_DAYS = 14;
+var TIME_SLOTS = ['☀️ 早上', '🌤️ 下午', '🌙 晚上', '🌑 深夜'];
+var MAX_DAYS = 14;
 
-const XD_EMOTIONS = {
-  happy:  { label: '😊 开心', eventBias: 'repair' },
-  normal: { label: '😐 正常', eventBias: null },
-  upset:  { label: '😢 难过', eventBias: 'daily' },
-  angry:  { label: '😡 生气', eventBias: 'conflict' },
-  cold:   { label: '🥶 冷漠', eventBias: 'conflict' },
+var XD_EMOTIONS = {
+  happy:      { label: '😊 开心', eventBias: 'repair' },
+  hopeful:    { label: '🌟 有希望', eventBias: 'repair' },
+  bittersweet:{ label: '🥹 心酸', eventBias: null },
+  normal:     { label: '😐 平静', eventBias: null },
+  torn:       { label: '😣 纠结', eventBias: 'conflict' },
+  worried:    { label: '😰 担心', eventBias: 'daily' },
+  sad:        { label: '😢 难过', eventBias: 'conflict' },
 };
 
-const ENDINGS = {
-  mood_zero:  { icon: '🧠💥', title: '精神崩溃', text: '你的心态彻底崩溃了。\n你请了长假，关掉了手机。\n这段关系耗尽了你所有的能量。\n你需要很长时间才能恢复。' },
-  money_zero: { icon: '💸', title: '钱包见底', text: '你的钱花光了。\n房租交不起，信用卡逾期。\n你在这段关系里失去了基本的生活保障。\n小丁说你没用，然后离开了。' },
-  trust_zero: { icon: '💔', title: '被分手了', text: '"我们分手吧。这次是认真的。"\n小丁拉黑了你的所有联系方式。\n你盯着那个灰色的头像，\n不知道是解脱还是失落。' },
-  survived:   { icon: '😮‍💨', title: '苟延残喘', text: '你们勉强撑过了14天。\n关系没有变好，也没有更差。\n你们就这样耗着，\n谁都不愿意先放手。\n\n这也许就是大多数关系的样子。' },
-  good:       { icon: '💕', title: '走向稳定', text: '经过14天的磨合，\n你和小丁都在慢慢成长。\n争吵变少了，沟通变多了。\n虽然还有很多问题，\n但至少你们在一起面对。' },
-  perfect:    { icon: '✨', title: '完美恋人（隐藏结局）', text: '四项资源全部超过80！\n你不仅维持住了关系，\n还保持了自我、赚到了钱、赢得了信任。\n\n等等……这在现实中可能吗？\n\n恭喜你找到了这个游戏的"攻略答案"。\n但生活没有攻略。' },
-  liberation: { icon: '🕊️', title: '自我解放', text: '你选择了结束这段关系。\n\n不是因为不爱了，\n而是因为你终于学会了爱自己。\n\n小丁哭了，你也哭了。\n但你知道，这是对的。\n\n有些爱，放手才是答案。' },
+var ENDINGS = {
+  mood_zero: {
+    icon: '🧠💥', title: '精神崩溃',
+    text: '你垮了。\n不是因为不够努力，\n是因为这个世界对你太不公平。\n\n你请了长假回了老家。\n小丁给你发了很多消息，\n但你已经没有力气回复了。\n\n"对不起，我撑不住了。"'
+  },
+  money_zero: {
+    icon: '💸', title: '一无所有',
+    text: '你把所有的钱都花在了\n证明自己、维持关系上。\n\n交不起房租的那天晚上，\n你坐在马路边给小丁发了最后一条消息：\n"等我重新站起来。"\n\n她回了一句："我不在乎你有没有钱。"\n可你在乎。'
+  },
+  trust_zero: {
+    icon: '💔', title: '被迫分离',
+    text: '小丁的爸最终赢了。\n\n不是因为他是对的，\n而是因为他手里有太多筹码——\n亲情、户口、生活费、家族压力。\n\n小丁最后发给你的消息是：\n"对不起。我爱你。但我太累了。"\n\n你看着这句话，\n一个字一个字地读了一百遍。'
+  },
+  survived: {
+    icon: '😮‍💨', title: '苦苦支撑',
+    text: '14天过去了。\n你们还在一起，但谁都不知道明天会怎样。\n\n小丁还在跟她爸周旋。\n你还在拼命赚钱。\n你们的爱情像一棵长在石缝里的草——\n活着，但活得很艰难。\n\n至少，今天还在一起。'
+  },
+  good: {
+    icon: '🌅', title: '曙光初现',
+    text: '14天过去了。\n小丁的妈妈站在了你们这边。\n你的工作也有了起色。\n\n她爸虽然还是不同意，\n但态度从"绝对不行"变成了沉默。\n\n小丁说："沉默就是松动的开始。"\n你笑了，第一次觉得未来有了一点光。\n\n路还很长，但你们在一起走。'
+  },
+  perfect: {
+    icon: '✨', title: '偏见终会被打破（隐藏结局）',
+    text: '你做到了不可能的事——\n心态、经济、信任全部保持在高位。\n\n你升了职，攒了钱，\n小丁的爸终于同意见你一面。\n\n席间，他一直沉默。\n最后他说了一句：\n"你确实跟我想象的不一样。"\n\n这不是完美的结局，\n但这是一个开始。\n偏见不会一夜消失，\n但你用行动撬动了它的一角。'
+  },
+  letting_go: {
+    icon: '🕊️', title: '放手也是爱',
+    text: '你选择了放手。\n\n不是因为不爱了，\n而是因为你太爱她了。\n你不忍心看她在你和家庭之间撕裂。\n\n分开那天，你们都哭了。\n她说："你是我遇到过最好的人。"\n你说："你也是。"\n\n后来你回了苏北，\n在老家的河边坐了一个下午。\n你想，如果出生的时候可以选择，\n你还是会选择苏北。\n因为那里有你的根。\n\n而她，会是你心里永远的一道光。'
+  },
 };
 
-const Game = {
+var Game = {
   state: null,
 
-  getInitState() {
-    return { day: 1, timeSlotIdx: 0, mood: 70, money: 50, trust: 50, timeLeft: 4, xiaoDingEmotion: 'normal', awakening: 0, phase: 'activity', usedEvents: new Set(), dayEvents: 0, totalChoices: 0 };
+  getInitState: function() {
+    return { day: 1, timeSlotIdx: 0, mood: 70, money: 50, trust: 50, timeLeft: 4, xiaoDingEmotion: 'torn', awakening: 0, phase: 'activity', usedEvents: {}, dayEvents: 0, totalChoices: 0 };
   },
 
-  start() {
+  start: function() {
     this.state = this.getInitState();
     this.showScreen('screen-game');
     this.clearChat();
-    this.addMsg('system', '— 第' + this.state.day + '天 —');
-    this.addMsg('narrator', '新的一天开始了。你有4个时段可以安排。先做点什么吧。');
+    this.addMsg('system', '— 第1天 —');
+    this.addMsg('narrator', '小丁昨晚又跟她爸吵了一架。因为你。因为你是苏北人。');
+    this.addMsg('narrator', '你醒来看到她凌晨发的消息："对不起，又让你担心了。"');
+    this.addMsg('narrator', '新的一天。你有4个时段可以安排。');
     this.showActivities();
     this.updateUI();
   },
 
-  restart() { this.showScreen('screen-start'); },
+  restart: function() { this.showScreen('screen-start'); },
 
-  showScreen(id) {
+  showScreen: function(id) {
     document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
   },
 
-  updateUI() {
+  updateUI: function() {
     var s = this.state;
     document.getElementById('day-num').textContent = '第' + s.day + '天';
     document.getElementById('time-slot').textContent = TIME_SLOTS[s.timeSlotIdx] || '🌑 深夜';
-    document.getElementById('xiaoding-mood').textContent = '小丁：' + XD_EMOTIONS[s.xiaoDingEmotion].label;
+    var emo = XD_EMOTIONS[s.xiaoDingEmotion] || XD_EMOTIONS['torn'];
+    document.getElementById('xiaoding-mood').textContent = '小丁：' + emo.label;
     this.updateBar('mood', s.mood);
     this.updateBar('money', s.money);
     this.updateBar('trust', s.trust);
@@ -805,7 +870,7 @@ const Game = {
     document.getElementById('val-time').textContent = s.timeLeft + '/4';
   },
 
-  updateBar(key, val) {
+  updateBar: function(key, val) {
     val = Math.max(0, Math.min(100, val));
     document.getElementById('bar-' + key).style.width = val + '%';
     document.getElementById('val-' + key).textContent = val;
@@ -816,13 +881,36 @@ const Game = {
     }
   },
 
-  clearChat() { document.getElementById('chat-area').innerHTML = ''; },
+  clearChat: function() { document.getElementById('chat-area').innerHTML = ''; },
 
-  addMsg(from, text) {
+  addMsg: function(from, text) {
     if (!text) return;
     var chat = document.getElementById('chat-area');
+    // 带头像的消息（小丁 / 我）
+    if (from === 'xd' || from === 'me') {
+      var row = document.createElement('div');
+      row.className = 'msg-row ' + (from === 'xd' ? 'msg-row-xd' : 'msg-row-me');
+      var avatar = document.createElement('div');
+      avatar.className = 'avatar ' + (from === 'xd' ? 'avatar-xd' : 'avatar-me');
+      var bubble = document.createElement('div');
+      bubble.className = 'msg-bubble';
+      var name = document.createElement('div');
+      name.className = 'msg-name ' + (from === 'xd' ? 'msg-name-xd' : 'msg-name-me');
+      name.textContent = from === 'xd' ? '小丁' : '我';
+      var msg = document.createElement('div');
+      msg.className = 'msg ' + (from === 'xd' ? 'msg-xd' : 'msg-me');
+      msg.textContent = text;
+      bubble.appendChild(name);
+      bubble.appendChild(msg);
+      row.appendChild(avatar);
+      row.appendChild(bubble);
+      chat.appendChild(row);
+      chat.scrollTop = chat.scrollHeight;
+      return msg;
+    }
+    // 系统/旁白/效果消息
     var div = document.createElement('div');
-    var classMap = { xd: 'msg msg-xd', me: 'msg msg-me', system: 'msg msg-system', narrator: 'msg msg-narrator', effect: 'msg msg-effect' };
+    var classMap = { system: 'msg msg-system', narrator: 'msg msg-narrator', effect: 'msg msg-effect' };
     div.className = classMap[from] || 'msg msg-system';
     div.textContent = text;
     chat.appendChild(div);
@@ -830,15 +918,14 @@ const Game = {
     return div;
   },
 
-  addEffect(text, positive) {
+  addEffect: function(text, positive) {
     var div = this.addMsg('effect', text);
     if (div) { div.classList.add(positive ? 'effect-positive' : 'effect-negative'); }
   },
 
-  setChoices(choices) {
+  setChoices: function(choices) {
     var area = document.getElementById('choices-area');
     area.innerHTML = '';
-    var self = this;
     choices.forEach(function(c) {
       var btn = document.createElement('button');
       btn.className = 'choice-btn ' + (c.className || '');
@@ -850,13 +937,14 @@ const Game = {
     });
   },
 
-  applyEffects(effects) {
+  applyEffects: function(effects) {
     var s = this.state;
     var labels = { mood: '心态', money: '钱包', trust: '信任' };
     var changes = [];
     for (var key in effects) {
       var val = effects[key];
       if (val === 0 || val == null) continue;
+      if (!labels[key]) continue;
       var old = s[key];
       s[key] = Math.max(0, Math.min(100, s[key] + val));
       var actual = s[key] - old;
@@ -867,13 +955,13 @@ const Game = {
     }
     if (changes.length > 0) {
       var allNeg = true;
-      for (var k in effects) { if (effects[k] != null && effects[k] > 0) { allNeg = false; break; } }
+      for (var k in effects) { if (labels[k] && effects[k] != null && effects[k] > 0) { allNeg = false; break; } }
       this.addEffect(changes.join('  '), !allNeg);
     }
     this.updateUI();
   },
 
-  showActivities() {
+  showActivities: function() {
     var s = this.state;
     var self = this;
     var choices = DAILY_ACTIVITIES.map(function(act) {
@@ -884,7 +972,7 @@ const Game = {
     this.setChoices(choices);
   },
 
-  doActivity(act) {
+  doActivity: function(act) {
     var s = this.state;
     var self = this;
     if (act.failCondition && act.failCondition(s)) { this.addMsg('narrator', act.failText); return; }
@@ -900,22 +988,23 @@ const Game = {
     else { this.updateUI(); this.showActivities(); }
   },
 
-  endActivities() {
+  endActivities: function() {
     this.state.phase = 'event';
-    this.addMsg('system', '— 事件时间 —');
+    this.addMsg('system', '— 事件 —');
     this.triggerEvent();
   },
 
-  triggerEvent() {
+  triggerEvent: function() {
     var s = this.state;
     var available = EVENT_POOL.filter(function(e) {
-      if (s.usedEvents.has(e.id) && e.type !== 'daily') return false;
+      if (s.usedEvents[e.id] && e.type !== 'daily') return false;
       if (e.minDay > s.day) return false;
       if (e.condition && !e.condition(s)) return false;
       return true;
     });
     if (available.length === 0) { this.endDay(); return; }
-    var emotionBias = XD_EMOTIONS[s.xiaoDingEmotion].eventBias;
+    var emo = XD_EMOTIONS[s.xiaoDingEmotion] || {};
+    var emotionBias = emo.eventBias;
     var weights = available.map(function(e) {
       var w = e.weight(s);
       if (emotionBias && e.type === emotionBias) w *= 1.5;
@@ -928,28 +1017,28 @@ const Game = {
     var selectedIdx = 0;
     for (var i = 0; i < weights.length; i++) { rand -= weights[i]; if (rand <= 0) { selectedIdx = i; break; } }
     var event = available[selectedIdx];
-    s.usedEvents.add(event.id);
+    s.usedEvents[event.id] = true;
     this.playEvent(event);
   },
 
-  playEvent(event) {
+  playEvent: function(event) {
     var self = this;
     var delay = 0;
     event.messages.forEach(function(msg) {
       setTimeout(function() { self.addMsg(msg.from, msg.text); }, delay);
-      delay += 600;
+      delay += 700;
     });
-    setTimeout(function() { self.showEventChoices(event); }, delay + 300);
+    setTimeout(function() { self.showEventChoices(event); }, delay + 400);
   },
 
-  showEventChoices(event) {
+  showEventChoices: function(event) {
     var s = this.state;
     var self = this;
     var choices = event.choices.slice();
     if (s.mood < 25 && choices.length > 2) {
       var removeIdx = 1 + Math.floor(Math.random() * (choices.length - 1));
       choices.splice(removeIdx, 1);
-      this.addMsg('narrator', '（你太累了，脑子转不动了……）');
+      this.addMsg('narrator', '（你太累了，很多话到嘴边又咽回去了……）');
     }
     var choiceButtons = choices.map(function(c) {
       return { text: c.text, cost: c.cost, action: function() { self.makeChoice(event, c); } };
@@ -957,7 +1046,7 @@ const Game = {
     this.setChoices(choiceButtons);
   },
 
-  makeChoice(event, choice) {
+  makeChoice: function(event, choice) {
     var s = this.state;
     var self = this;
     s.totalChoices++;
@@ -970,38 +1059,39 @@ const Game = {
         setTimeout(function() {
           self.addMsg(choice.followUp.from, choice.followUp.text);
           if (choice.consumeTimeSlot && s.timeLeft > 0) { s.timeLeft--; s.timeSlotIdx = 4 - s.timeLeft; self.addEffect('消耗了一个时间段', false); self.updateUI(); }
-          if (choice.triggerEnding) { setTimeout(function() { self.showEnding(choice.triggerEnding); }, 1000); return; }
+          if (choice.triggerEnding) { setTimeout(function() { self.showEnding(choice.triggerEnding); }, 1500); return; }
           if (self.checkEnding()) return;
           s.dayEvents++;
           setTimeout(function() {
             if (s.dayEvents < 2 && Math.random() < 0.6) { self.addMsg('system', '—'); self.triggerEvent(); }
             else { self.endDay(); }
           }, 800);
-        }, 600);
+        }, 800);
       } else {
-        if (choice.triggerEnding) { setTimeout(function() { self.showEnding(choice.triggerEnding); }, 1000); return; }
+        if (choice.triggerEnding) { setTimeout(function() { self.showEnding(choice.triggerEnding); }, 1500); return; }
         if (self.checkEnding()) return;
         s.dayEvents++;
         setTimeout(function() { self.endDay(); }, 800);
       }
-    }, 400);
+    }, 500);
   },
 
-  endDay() {
+  endDay: function() {
     var s = this.state;
     var self = this;
     s.phase = 'dayEnd';
     this.addMsg('system', '— 第' + s.day + '天结束 —');
-    if (s.xiaoDingEmotion === 'angry') s.xiaoDingEmotion = 'upset';
-    else if (s.xiaoDingEmotion === 'upset') s.xiaoDingEmotion = 'normal';
-    else if (s.xiaoDingEmotion === 'cold') s.xiaoDingEmotion = 'upset';
-    this.addMsg('narrator', '日常开销和精神消耗让你的资源有所下降。');
+    // 小丁情绪缓和
+    if (s.xiaoDingEmotion === 'sad') s.xiaoDingEmotion = 'torn';
+    else if (s.xiaoDingEmotion === 'worried') s.xiaoDingEmotion = 'torn';
+    else if (s.xiaoDingEmotion === 'torn') s.xiaoDingEmotion = 'bittersweet';
+    this.addMsg('narrator', '又一天过去了。房租、吃饭、交通……日子在继续。');
     this.applyEffects({ mood: -3, money: -3 });
     if (this.checkEnding()) return;
     this.setChoices([{ text: '进入第' + (s.day + 1) + '天 ➡️', className: 'next-btn', action: function() { self.nextDay(); } }]);
   },
 
-  nextDay() {
+  nextDay: function() {
     var s = this.state;
     s.day++;
     s.timeSlotIdx = 0;
@@ -1010,19 +1100,26 @@ const Game = {
     s.phase = 'activity';
     if (s.day > MAX_DAYS) { this.checkFinalEnding(); return; }
     this.addMsg('system', '— 第' + s.day + '天 —');
-    if (s.day === 5) this.addMsg('narrator', '你和小丁在一起已经快一周了。争吵似乎越来越频繁了……');
-    else if (s.day === 8) this.addMsg('narrator', '第八天。你感觉自己像在跑一场没有终点的马拉松。');
-    else if (s.day === 11) this.addMsg('narrator', '还有几天。你开始思考这一切到底值不值得。');
-    else if (s.day === 14) this.addMsg('narrator', '最后一天了。无论发生什么，今天都是一个结局。');
+    if (s.day === 4) this.addMsg('narrator', '你在这座城市已经习惯了被贴上"苏北人"的标签。但习惯不代表不痛。');
+    else if (s.day === 7) this.addMsg('narrator', '一周了。小丁的爸还是没有松口的迹象。你有时候会想，你到底在坚持什么。');
+    else if (s.day === 10) this.addMsg('narrator', '第十天。你照镜子的时候发现自己瘦了很多。小丁也是。你们都在被这段关系消耗。');
+    else if (s.day === 13) this.addMsg('narrator', '倒数第二天了。不管结果如何，你想告诉她：遇见你，我不后悔。');
+    else if (s.day === 14) this.addMsg('narrator', '最后一天。你深吸一口气，打开了手机。');
     else {
-      var mornings = ['闹钟响了。新的一天，新的挑战。', '你被手机消息声吵醒了。', '你睁开眼，想到今天又要面对各种状况，叹了口气。', '阳光透过窗帘。如果忽略手机里那些未读消息，这其实是个不错的早晨。', '你醒了，第一件事是看小丁有没有发消息。'];
+      var mornings = [
+        '闹钟响了。窗外是这座不完全属于你的城市。',
+        '小丁昨晚的消息你看了很多遍。"晚安"两个字，她也能让你看出心酸。',
+        '你醒来，想到今天要面对的一切，在床上多躺了五分钟。',
+        '新的一天。你在心里跟自己说：再撑一下。',
+        '天亮了。你摸了摸枕头旁边空着的位置，想起了她。',
+      ];
       this.addMsg('narrator', mornings[Math.floor(Math.random() * mornings.length)]);
     }
     this.showActivities();
     this.updateUI();
   },
 
-  checkEnding() {
+  checkEnding: function() {
     var s = this.state;
     if (s.mood <= 0) { this.showEnding('mood_zero'); return true; }
     if (s.money <= 0) { this.showEnding('money_zero'); return true; }
@@ -1030,14 +1127,14 @@ const Game = {
     return false;
   },
 
-  checkFinalEnding() {
+  checkFinalEnding: function() {
     var s = this.state;
     if (s.mood >= 80 && s.money >= 80 && s.trust >= 80) { this.showEnding('perfect'); return; }
     if (s.trust >= 60 && s.mood >= 50) { this.showEnding('good'); return; }
     this.showEnding('survived');
   },
 
-  showEnding(endingId) {
+  showEnding: function(endingId) {
     var ending = ENDINGS[endingId];
     if (!ending) return;
     var s = this.state;
@@ -1045,7 +1142,7 @@ const Game = {
     document.getElementById('ending-title').textContent = ending.title;
     document.getElementById('ending-text').textContent = ending.text;
     document.getElementById('ending-stats').innerHTML =
-      '<div>📅 存活天数：' + s.day + ' / ' + MAX_DAYS + '</div>' +
+      '<div>📅 坚持天数：' + s.day + ' / ' + MAX_DAYS + '</div>' +
       '<div>🧠 最终心态：' + s.mood + '</div>' +
       '<div>💰 最终钱包：' + s.money + '</div>' +
       '<div>🤝 最终信任：' + s.trust + '</div>' +
