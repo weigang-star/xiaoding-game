@@ -773,6 +773,185 @@ var EVENT_POOL = [
     ],
     condition: function(s) { return s.day >= 5; }, weight: function(s) { return 6; }, minDay: 5,
   },
+
+  // ===== 小丁的内心纠结——年龄焦虑 =====
+  {
+    id: 'xd_age_anxiety', type: 'daily',
+    messages: [
+      { from: 'narrator', text: '晚上，小丁突然发来一段很长的消息。' },
+      { from: 'xd', text: '我今天看到一个帖子，说女生年龄大了就不值钱了' },
+      { from: 'xd', text: '我比你大两岁……我有时候真的很怕' },
+      { from: 'xd', text: '怕有一天你觉得我老了，不要我了' },
+      { from: 'xd', text: '我付出了这么多，跟家里闹翻了……如果最后你还是离开我……' },
+    ],
+    choices: [
+      { text: '"你比我大两岁怎么了？我喜欢的是你这个人"', cost: '心态-5，信任+10', effects: { mood: -5, trust: 10 }, xdEmotion: 'bittersweet', response: '你比我大两岁怎么了？我从来没在意过这个。我喜欢的是你这个人，不是你的年龄。', responseFrom: 'me', followUp: { from: 'xd', text: '可是……你现在这样说，以后呢？万一你遇到更年轻的……' } },
+      { text: '"我不会离开你的。你要相信我。"', cost: '心态-8，信任+8', effects: { mood: -8, trust: 8 }, xdEmotion: 'torn', response: '我不会离开你的。你为了我付出了那么多，我怎么可能扔下你。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁沉默了很久。她想信你，但她见过太多承诺最后变成谎言。她的恐惧不是因为不信你，是因为太怕失去你。' } },
+      { text: '"别看那些乱七八糟的帖子了"', cost: '信任-8', effects: { trust: -8 }, xdEmotion: 'sad', response: '别看那些乱七八糟的东西，都是制造焦虑的。', responseFrom: 'me', followUp: { from: 'xd', text: '你永远不懂……你是男的，你没有这种压力。我今年都29了，我爸天天催，我朋友都结婚了……' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 8; }, minDay: 2,
+  },
+  {
+    id: 'xd_fear_abandoned', type: 'conflict',
+    messages: [
+      { from: 'xd', text: '我跟你说个心里话' },
+      { from: 'xd', text: '有时候晚上睡不着，我会想一个很可怕的事' },
+      { from: 'xd', text: '如果我为了你跟家里断了关系' },
+      { from: 'xd', text: '然后有一天你不要我了' },
+      { from: 'xd', text: '那我就什么都没有了' },
+      { from: 'narrator', text: '你感受到了她话语里深深的恐惧。这不是撒娇，是真的害怕。' },
+    ],
+    choices: [
+      { text: '"我发誓，我这辈子不会辜负你"', cost: '心态-10，信任+8', effects: { mood: -10, trust: 8 }, xdEmotion: 'torn', response: '我发誓。你为了我放弃的每一样东西，我都会用一辈子来还。', responseFrom: 'me', followUp: { from: 'xd', text: '别发誓……我不要你发誓。我只要你……真的做到。' } },
+      { text: '"你不会什么都没有。你还有你自己。"', cost: '心态-5，信任+3', effects: { mood: -5, trust: 3 }, xdEmotion: 'torn', response: '你不会什么都没有。就算没有我，你也有你自己。你那么好，不会没人爱你的。', responseFrom: 'me', followUp: { from: 'narrator', text: '"可我不想要别人爱我！"小丁几乎是喊出来的。"我只想要你。但我好怕。我真的好怕。"你不知道该怎么回答。因为她害怕的事，你也没有百分百的把握。' } },
+      { text: '沉默了很久，打了一段很长的话', cost: '心态-15，信任+12', effects: { mood: -15, trust: 12 }, xdEmotion: 'bittersweet', response: '小丁，我知道你在怕什么。说实话，我也怕。我怕我不够好，怕我给不了你想要的生活。但有一件事我很确定——你为我付出的一切，我都记在心里。不管将来发生什么，我永远不会假装这些不存在。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看了这段话很久。她截了图，存在了手机最隐秘的相册里。她知道这不是保证，但至少，是真心话。' } },
+    ],
+    condition: function(s) { return s.day >= 4; }, weight: function(s) { return 9; }, minDay: 4,
+  },
+
+  // ===== 小丁的内心纠结——过年回家 =====
+  {
+    id: 'xd_spring_festival', type: 'conflict',
+    messages: [
+      { from: 'xd', text: '快过年了' },
+      { from: 'xd', text: '我妈问我今年回不回家' },
+      { from: 'xd', text: '你知道的……如果我跟你在一起，我连家都不敢回' },
+      { from: 'xd', text: '去年过年我一个人在出租屋哭了一晚上' },
+      { from: 'narrator', text: '你突然意识到一件事——找一个本地人，她至少能回家过年。而跟你在一起，连除夕夜都是偷来的。' },
+    ],
+    choices: [
+      { text: '"今年我陪你过。我们自己的年。"', cost: '钱包-15，信任+10，心态-5', effects: { money: -15, trust: 10, mood: -5 }, xdEmotion: 'bittersweet', response: '今年我陪你过。我给你包饺子，你不用一个人了。', responseFrom: 'me', followUp: { from: 'xd', text: '好……可是你不回你自己的家吗？你妈也在等你啊。' } },
+      { text: '"你回去吧。跟家人过年更重要。"', cost: '心态-15，信任-5', effects: { mood: -15, trust: -5 }, xdEmotion: 'sad', response: '你回去吧。过年就该跟家人在一起。别因为我不回家。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁没有回消息。你知道她在想什么——回了家，就要面对她爸无休止的逼问和安排。不回家，又是一个人过年。怎么选都是苦。' } },
+      { text: '"我们……去一个谁都不认识的地方过年？"', cost: '钱包-20，心态+5，信任+8', effects: { money: -20, mood: 5, trust: 8 }, xdEmotion: 'hopeful', response: '要不我们去一个谁都不认识的地方？就我们两个人，过一个安安静静的年。', responseFrom: 'me', followUp: { from: 'xd', text: '真的可以吗……听起来好像做梦一样。我想去。但我又觉得好自私，我妈在家肯定会想我的。' } },
+    ],
+    condition: function(s) { return s.day >= 3; }, weight: function(s) { return 8; }, minDay: 3,
+  },
+  {
+    id: 'xd_envy_local', type: 'daily',
+    messages: [
+      { from: 'narrator', text: '小丁在朋友圈看到了闺蜜的动态——全家人吃年夜饭的照片，其乐融融。' },
+      { from: 'xd', text: '你说' },
+      { from: 'xd', text: '是不是找一个本地的，就什么烦恼都没有了' },
+      { from: 'xd', text: '不用跟家里吵，不用偷偷摸摸，过年也能回家' },
+      { from: 'narrator', text: '你看着这几行字，心像被攥了一下。她不是在试探你，她是在问自己。' },
+    ],
+    choices: [
+      { text: '"是。但那个人不是我。"', cost: '心态-15，信任+5', effects: { mood: -15, trust: 5 }, xdEmotion: 'torn', response: '是，找个本地的确实简单很多。但那个人不是我。你要简单，还是要我？', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁没有马上回答。过了很久，她说："我要你。但我好累。"这六个字，你每一个都懂，但连在一起，重得让人喘不过气。' } },
+      { text: '"你是在怪我吗？"', cost: '心态-10，信任-8', effects: { mood: -10, trust: -8 }, xdEmotion: 'sad', response: '你是在怪我？怪我不是本地人？', responseFrom: 'me', followUp: { from: 'xd', text: '我没有怪你！我只是……我只是有时候忍不住会想。你不要生气。求你了。' } },
+      { text: '"对不起……是我让你为难了"', cost: '心态-10，信任+5', effects: { mood: -10, trust: 5 }, xdEmotion: 'bittersweet', response: '对不起。是我拖累了你。如果不是我，你的生活会简单很多。', responseFrom: 'me', followUp: { from: 'xd', text: '你不要这样说……你又不是故意的。没有人可以选择自己出生在哪里。我只是……有时候觉得命运好不公平。' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 7; }, minDay: 2,
+  },
+
+  // ===== 小丁的内心纠结——害怕最终两头落空 =====
+  {
+    id: 'xd_worst_fear', type: 'conflict',
+    messages: [
+      { from: 'narrator', text: '深夜，小丁发了一条语音。你点开，听到的声音很疲惫。' },
+      { from: 'xd', text: '我最近总做同一个噩梦' },
+      { from: 'xd', text: '梦到我为了你跟家里彻底断了' },
+      { from: 'xd', text: '然后过了几年你说你累了，想分开' },
+      { from: 'xd', text: '那时候我回不了家，你也不在了' },
+      { from: 'xd', text: '我一个人站在马路中间，哪边都去不了' },
+    ],
+    choices: [
+      { text: '"我知道你在怕什么。我不会让这个噩梦成真"', cost: '心态-10，信任+10', effects: { mood: -10, trust: 10 }, xdEmotion: 'torn', response: '我知道你在怕什么。我没法保证未来不会有任何困难，但我可以保证——我不会让你一个人站在马路中间。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁听完这条语音，缩在被子里哭了很久。她想相信。但这个噩梦太真实了，真实到她分不清哪边是梦，哪边是现实。' } },
+      { text: '"你可以不用为了我跟家里断"', cost: '心态-5，信任-5', effects: { mood: -5, trust: -5 }, xdEmotion: 'sad', response: '你不一定要跟家里断。也许我们可以慢慢来，不用那么极端。', responseFrom: 'me', followUp: { from: 'xd', text: '慢慢来？我爸给我的选择就是要么分手，要么断绝关系。哪里有慢慢来的余地……' } },
+      { text: '心里翻涌着说不出话，最后只发了："抱抱你"', cost: '心态-12，信任+8', effects: { mood: -12, trust: 8 }, xdEmotion: 'bittersweet', response: '抱抱你。', responseFrom: 'me', followUp: { from: 'narrator', text: '两个字。但小丁看到的时候，终于觉得有人在。哪怕隔着屏幕，哪怕解决不了任何问题，至少有人在。' } },
+    ],
+    condition: function(s) { return s.day >= 5; }, weight: function(s) { return 9; }, minDay: 5,
+  },
+  {
+    id: 'xd_regret_question', type: 'daily',
+    messages: [
+      { from: 'xd', text: '今天我同事结婚了' },
+      { from: 'xd', text: '她老公是她大学同学 家里人都很满意' },
+      { from: 'xd', text: '婚礼上她爸妈笑得好开心' },
+      { from: 'xd', text: '我突然想到……我结婚的时候，我爸会来吗' },
+      { from: 'narrator', text: '你看到这条消息的时候，正在加班。手停在键盘上，很久没动。' },
+    ],
+    choices: [
+      { text: '"他会来的。等他看到你幸福，他会后悔的"', cost: '心态-8，信任+5', effects: { mood: -8, trust: 5 }, xdEmotion: 'bittersweet', response: '他会来的。到时候我让你成为全场最幸福的新娘，让你爸看看他女儿嫁的人有多好。', responseFrom: 'me', followUp: { from: 'xd', text: '你说的好好听……可是我怕等不到那一天。' } },
+      { text: '"这个问题……我也没有答案"', cost: '心态-10，信任-3', effects: { mood: -10, trust: -3 }, xdEmotion: 'sad', response: '这个问题……说实话我也不知道答案。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁收到这条消息后，把手机扣在桌子上。她不是生气，只是太难过了。她想要一个哪怕是假的答案，但你连假话都不愿意说。' } },
+      { text: '"就算他不来，我也会让那天成为你最好的一天"', cost: '心态-12，信任+10，钱包-5', effects: { mood: -12, trust: 10, money: -5 }, xdEmotion: 'bittersweet', response: '就算他不来，我也会把那一天变成你最好的一天。我保证。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁对着屏幕笑了，但眼泪同时掉了下来。她在想象那个画面——没有爸爸牵着走过红毯的婚礼。就算再幸福，也缺了一块。' } },
+    ],
+    condition: function(s) { return s.day >= 3; }, weight: function(s) { return 7; }, minDay: 3,
+  },
+
+  // ===== 小丁动摇与自我怀疑类 =====
+  {
+    id: 'xd_self_doubt', type: 'conflict',
+    messages: [
+      { from: 'xd', text: '你说实话' },
+      { from: 'xd', text: '你觉得我是不是太自私了' },
+      { from: 'xd', text: '有时候我也在想 是不是我爸说得对' },
+      { from: 'xd', text: '门当户对 本地人找本地人 大家都省心' },
+      { from: 'xd', text: '而不是像我们这样 每天都在挣扎' },
+    ],
+    choices: [
+      { text: '"门当户对是老黄历了。我们自己的路自己走。"', cost: '心态-5，信任+8', effects: { mood: -5, trust: 8 }, xdEmotion: 'torn', response: '你不自私。门当户对是老黄历了。什么苏北苏南的，都是江苏人，都是中国人。我们的路，我们自己走。', responseFrom: 'me', followUp: { from: 'xd', text: '道理我都懂……可是道理又没办法让我爸改变想法，也没办法让过年的时候我不想家……' } },
+      { text: '"你动摇了？"', cost: '心态-10，信任-10', effects: { mood: -10, trust: -10 }, xdEmotion: 'sad', response: '你动摇了？你是不是也开始觉得你爸说的是对的？', responseFrom: 'me', followUp: { from: 'xd', text: '我没有动摇！我只是……我只是好累。你能不能不要一听到这些就生气？我也在扛啊。' } },
+      { text: '"你不自私。你只是被逼到了角落里。"', cost: '心态-8，信任+5', effects: { mood: -8, trust: 5 }, xdEmotion: 'bittersweet', response: '你不自私。你只是一个想跟家里人和好、又想跟喜欢的人在一起的普通女孩。是这个世界不让你两个都选。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看着这条消息，眼睛湿了。你说出了她心里最深处的话——她不贪心，她只是想两个都要。但偏见像一堵墙，把她硬生生劈成了两半。' } },
+    ],
+    condition: function(s) { return s.day >= 3; }, weight: function(s) { return 8; }, minDay: 3,
+  },
+  {
+    id: 'xd_age_pressure', type: 'daily',
+    messages: [
+      { from: 'xd', text: '我姑妈今天来家里了' },
+      { from: 'xd', text: '当着我面说"都快三十了还不结婚 以后可就难找了"' },
+      { from: 'xd', text: '我爸在旁边补了一句"不是不找 是找了个不靠谱的"' },
+      { from: 'narrator', text: '你能想象到小丁坐在客厅里、被众人审视的窒息感。' },
+    ],
+    choices: [
+      { text: '"他们放屁！你哪里不好了"', cost: '心态-5，信任+5', effects: { mood: -5, trust: 5 }, xdEmotion: 'bittersweet', response: '他们在放屁。你很好，你什么都好。不要因为别人的偏见否定自己。', responseFrom: 'me', followUp: { from: 'xd', text: '嗯……我知道。但一个人扛这些，真的好孤单。好羡慕那些不用偷偷摸摸恋爱的人。' } },
+      { text: '"我拖累了你的人生进度……"', cost: '心态-15，信任-3', effects: { mood: -15, trust: -3 }, xdEmotion: 'torn', response: '是不是因为我，耽误了你的人生进度……如果你早点找个家里同意的人，现在可能已经……', responseFrom: 'me', followUp: { from: 'xd', text: '你闭嘴！你再这样说我真的生气了！我选了你是我自己的决定，不是你拖累了我！' } },
+      { text: '"等我准备好了，我会去正式提亲的"', cost: '心态-10，信任+10，钱包-5', effects: { mood: -10, trust: 10, money: -5 }, xdEmotion: 'hopeful', response: '小丁，等我准备好了，我会正正经经去你家提亲。让你姑妈让你爸都看看，我到底靠不靠谱。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看到这条消息的时候在厨房洗碗。眼泪混着洗碗水一起流进了水池。她好想相信这一天真的会来。' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 7; }, minDay: 2,
+  },
+
+  // ===== 更多日常生活细节 =====
+  {
+    id: 'rainy_night_alone', type: 'daily',
+    messages: [
+      { from: 'narrator', text: '下雨了。出租屋的窗户关不严，有风漏进来。' },
+      { from: 'narrator', text: '你坐在床上，听着雨声，看着小丁的微信头像。' },
+      { from: 'narrator', text: '"在线"两个字一闪一闪的。你们都没有说话，但谁也没有睡。' },
+    ],
+    choices: [
+      { text: '发一句"下雨了，你那边也在下吗"', cost: '心态+3，信任+5', effects: { mood: 3, trust: 5 }, xdEmotion: 'bittersweet', response: '下雨了，你那边也在下吗？', responseFrom: 'me', followUp: { from: 'xd', text: '嗯，也在下。你那边冷不冷？别踢被子。' } },
+      { text: '什么都没发，关了手机', cost: '心态-5', effects: { mood: -5 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '你关了手机，听着雨声发呆。有些晚上，孤独像潮水一样涌上来，你什么都抓不住。' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 5; }, minDay: 1,
+  },
+  {
+    id: 'subway_thinking', type: 'daily',
+    messages: [
+      { from: 'narrator', text: '早高峰的地铁上。你被挤在人群中间，动弹不得。' },
+      { from: 'narrator', text: '旁边一对情侣在小声说话。女生靠在男生肩上，笑得很甜。' },
+      { from: 'narrator', text: '你低头看了看手机。小丁昨晚的最后一条消息是："晚安，明天会好的。"' },
+    ],
+    choices: [
+      { text: '回一句"早安，今天也会好的"', cost: '信任+3，心态+3', effects: { trust: 3, mood: 3 }, xdEmotion: 'bittersweet', response: '早安，今天也会好的。', responseFrom: 'me', followUp: { from: 'xd', text: '你每天的早安是我起床的动力。上班加油！' } },
+      { text: '什么都没回，到站了', cost: '心态-3', effects: { mood: -3 }, xdEmotion: null, response: '', responseFrom: 'narrator', followUp: { from: 'narrator', text: '地铁门打开的一瞬间，你被人流推了出去。你想起小丁说"明天会好的"——可是已经很多个明天了，什么时候才能真的好？' } },
+    ],
+    condition: function(s) { return true; }, weight: function(s) { return 5; }, minDay: 1,
+  },
+  {
+    id: 'xd_mom_help', type: 'repair',
+    messages: [
+      { from: 'xd', text: '我妈刚才跟我说了一件事' },
+      { from: 'xd', text: '她说她私底下跟我爸提过你' },
+      { from: 'xd', text: '我爸没有像以前那样发火 只是叹了口气' },
+      { from: 'xd', text: '我妈说 叹气总比发火好' },
+    ],
+    choices: [
+      { text: '"那我是不是该准备一下，找个机会正式见面？"', cost: '心态-5，信任+10', effects: { mood: -5, trust: 10 }, xdEmotion: 'hopeful', response: '那我是不是该准备一下？买点好烟好酒，找个机会正式见叔叔？', responseFrom: 'me', followUp: { from: 'xd', text: '先别急！万一他又变卦了怎么办……我再让我妈试探试探。但这次真的感觉不一样了！' } },
+      { text: '"叹气……也许是因为他知道你不会让步吧"', cost: '心态+3，信任+5', effects: { mood: 3, trust: 5 }, xdEmotion: 'bittersweet', response: '也许你爸也在动摇。他那么爱你，看你这么辛苦，他也心疼。', responseFrom: 'me', followUp: { from: 'narrator', text: '小丁看了这条消息好几遍。也许是真的。也许她爸的固执，正在一点一点被女儿的坚持瓦解。' } },
+    ],
+    condition: function(s) { return s.day >= 6; }, weight: function(s) { return 7; }, minDay: 6,
+  },
 ];
 
 // ===== 每日活动 =====
